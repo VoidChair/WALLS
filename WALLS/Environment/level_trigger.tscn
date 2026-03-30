@@ -1,0 +1,238 @@
+[gd_scene format=3 uid="uid://c16bje623tnea"]
+
+[ext_resource type="Script" uid="uid://cqe720m8m1x77" path="res://Environment/level_trigger.gd" id="1_aq86i"]
+[ext_resource type="ArrayMesh" uid="uid://dxbxtxfo8utxr" path="res://Environment/Cube1.obj" id="2_it6ph"]
+[ext_resource type="Material" uid="uid://c73v8cstm5tgp" path="res://Environment/CubeMat2.tres" id="3_0vo6o"]
+[ext_resource type="Texture2D" uid="uid://fhspheg73shb" path="res://Interactable/LevelRadius.png" id="4_0vo6o"]
+[ext_resource type="AudioStream" uid="uid://d4dvmpkmagvpo" path="res://SFX/goal2.wav" id="6_eodel"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxok0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5sova"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eodel"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.989, 0.66999996, 1)
+albedo_texture = ExtResource("4_0vo6o")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vo6o"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="Animation" id="Animation_0vo6o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eodel"]
+resource_name = "hidden"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 30, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5sova"]
+resource_name = "start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 30, 0), Vector3(0, -0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eodel"]
+_data = {
+&"RESET": SubResource("Animation_0vo6o"),
+&"hidden": SubResource("Animation_eodel"),
+&"start": SubResource("Animation_5sova")
+}
+
+[sub_resource type="Animation" id="Animation_nm07h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube1/Outline:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.989, 0.66999996, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube1/LevelNumber:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.96500003, 0.79, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t7rjf"]
+resource_name = "completed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube1/Outline:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.48000002, 1, 0.97400004, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube1/LevelNumber:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.48000002, 1, 0.97400004, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ney7u"]
+resource_name = "locked"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube1/Outline:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.34, 0.34, 0.34, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube1/LevelNumber:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.37, 0.37, 0.37, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bjuh4"]
+resource_name = "unlocked"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube1/Outline:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.989, 0.66999996, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube1/LevelNumber:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.956, 0.76, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ney7u"]
+_data = {
+&"RESET": SubResource("Animation_nm07h"),
+&"completed": SubResource("Animation_t7rjf"),
+&"locked": SubResource("Animation_ney7u"),
+&"unlocked": SubResource("Animation_bjuh4")
+}
+
+[node name="LevelTrigger" type="Area3D" unique_id=340990172]
+script = ExtResource("1_aq86i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1172893397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_uxok0")
+disabled = true
+
+[node name="Cube1" type="MeshInstance3D" parent="." unique_id=2071220020]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.5, 0)
+cast_shadow = 0
+mesh = ExtResource("2_it6ph")
+surface_material_override/0 = ExtResource("3_0vo6o")
+
+[node name="LevelNumber" type="Label3D" parent="Cube1" unique_id=1492007643]
+transform = Transform3D(-0.185, 2.7934224e-08, 1.2210437e-15, 0, -8.086607e-09, 0.185, 2.7934224e-08, 0.185, 8.086607e-09, 0, 0.54999995, 0.024619982)
+modulate = Color(1, 0.96500003, 0.79, 1)
+text = "1"
+font_size = 591
+outline_size = 127
+
+[node name="Outline" type="MeshInstance3D" parent="Cube1" unique_id=1377702965]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.53, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_5sova")
+surface_material_override/0 = SubResource("StandardMaterial3D_eodel")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1317487068 groups=["environment"]]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1353326783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_0vo6o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=467205791]
+libraries/ = SubResource("AnimationLibrary_eodel")
+
+[node name="Color" type="AnimationPlayer" parent="." unique_id=880175865]
+libraries/ = SubResource("AnimationLibrary_ney7u")
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=28330801]
+stream = ExtResource("6_eodel")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,535 @@
+[gd_scene format=3 uid="uid://cebahae64tmj4"]
+
+[ext_resource type="Script" uid="uid://db4wg27bsx281" path="res://Interactable/button.gd" id="1_nbpx6"]
+[ext_resource type="ArrayMesh" uid="uid://d2ms8evbx64xl" path="res://Interactable/ButtonBase.obj" id="1_psbvd"]
+[ext_resource type="ArrayMesh" uid="uid://onj4q3xfegyy" path="res://Interactable/PuzzleCube.obj" id="2_dj83h"]
+[ext_resource type="Material" uid="uid://c64jjaa3lkr8n" path="res://Interactable/PuzzleCubeMat.tres" id="3_l2bcf"]
+[ext_resource type="Material" uid="uid://c73v8cstm5tgp" path="res://Environment/CubeMat2.tres" id="3_l205e"]
+[ext_resource type="ArrayMesh" uid="uid://c8ps72undijc2" path="res://Interactable/Button.obj" id="4_cgnlg"]
+[ext_resource type="Material" uid="uid://8ajjr00o5bve" path="res://Interactable/ButtonMat.tres" id="5_kib3a"]
+[ext_resource type="Material" uid="uid://bpilktihg3gq0" path="res://Interactable/PuzzleCubeOutline.tres" id="8_7dw40"]
+[ext_resource type="ArrayMesh" uid="uid://dtgmslkqtatvp" path="res://Interactable/ButtonWall.obj" id="8_snash"]
+[ext_resource type="Material" uid="uid://b3o37owhp3w2q" path="res://Characters/Subject2Outline.tres" id="9_iy1y8"]
+[ext_resource type="AudioStream" uid="uid://b6o0s2ebwkgip" path="res://SFX/button_click.wav" id="11_iy1y8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l205e"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="Animation" id="Animation_l205e"]
+resource_name = "CubePressed"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes/Button/PuzzleCubeBlue:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meshes/Button:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.05, 0), Vector3(0, -0.12332032, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wall:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 0.001, 1), Vector3(1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Wall:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Meshes/Button/PuzzleCubeRed:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_iy1y8"]
+resource_name = "CubePressed2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes/Button/PuzzleCubeBlue:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meshes/Button:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.05, 0), Vector3(0, -0.12332032, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wall:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 0.001, 1), Vector3(1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Wall:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Meshes/Button/PuzzleCubeRed:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ydffi"]
+resource_name = "LevelEnd"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Meshes/Button/PuzzleCubeBlue:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Meshes/Button:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.05, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wall:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.001, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Wall:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_cgnlg"]
+resource_name = "Pressed"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes/Button/PuzzleCubeBlue:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meshes/Button:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666669),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.05, 0), Vector3(0, -0.12332032, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Meshes/Button/PuzzleCubeRed:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nbpx6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes/Button/PuzzleCubeBlue:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meshes/Button:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.05, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wall:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.001, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Wall:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Meshes/Button/PuzzleCubeRed:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l205e"]
+_data = {
+&"CubePressed": SubResource("Animation_l205e"),
+&"CubePressed2": SubResource("Animation_iy1y8"),
+&"LevelEnd": SubResource("Animation_ydffi"),
+&"Pressed": SubResource("Animation_cgnlg"),
+&"RESET": SubResource("Animation_nbpx6")
+}
+
+[sub_resource type="Animation" id="Animation_kib3a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_snash"]
+resource_name = "hidden"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 30, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7dw40"]
+resource_name = "start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 30, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ydffi"]
+_data = {
+&"RESET": SubResource("Animation_kib3a"),
+&"hidden": SubResource("Animation_snash"),
+&"start": SubResource("Animation_7dw40")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nbpx6"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kib3a"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="Gradient" id="Gradient_7dw40"]
+offsets = PackedFloat32Array(0.2753623, 0.9873188, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ydffi"]
+gradient = SubResource("Gradient_7dw40")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_iy1y8"]
+texture = SubResource("GradientTexture2D_ydffi")
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_lgg03"]
+constant = Color(0.3864, 0.60398, 0.69, 1)
+
+[sub_resource type="VisualShader" id="VisualShader_4faaq"]
+modes/cull = 2
+flags/unshaded = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_iy1y8")
+nodes/fragment/2/position = Vector2(-280, 340)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorConstant_lgg03")
+nodes/fragment/3/position = Vector2(-67, 244)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 1, 3, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pe3vx"]
+render_priority = 0
+shader = SubResource("VisualShader_4faaq")
+
+[node name="Button" type="Area3D" unique_id=184482451 groups=["button"]]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_nbpx6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1298480838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_l205e")
+
+[node name="Meshes" type="Node3D" parent="." unique_id=1021971042]
+
+[node name="Base" type="MeshInstance3D" parent="Meshes" unique_id=1734829363]
+mesh = ExtResource("1_psbvd")
+surface_material_override/0 = ExtResource("3_l205e")
+
+[node name="Button" type="MeshInstance3D" parent="Meshes" unique_id=1516109537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = ExtResource("4_cgnlg")
+surface_material_override/0 = ExtResource("5_kib3a")
+
+[node name="PuzzleCubeBlue" type="MeshInstance3D" parent="Meshes/Button" unique_id=60836863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1093787, 0)
+visible = false
+mesh = ExtResource("2_dj83h")
+surface_material_override/0 = ExtResource("3_l2bcf")
+surface_material_override/1 = ExtResource("8_7dw40")
+surface_material_override/2 = ExtResource("8_7dw40")
+
+[node name="PuzzleCubeRed" type="MeshInstance3D" parent="Meshes/Button" unique_id=850591236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1093787, 0)
+visible = false
+mesh = ExtResource("2_dj83h")
+surface_material_override/0 = ExtResource("3_l2bcf")
+surface_material_override/1 = ExtResource("9_iy1y8")
+surface_material_override/2 = ExtResource("9_iy1y8")
+
+[node name="PressAnim" type="AnimationPlayer" parent="." unique_id=571932579]
+libraries/ = SubResource("AnimationLibrary_l205e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=128523450]
+libraries/ = SubResource("AnimationLibrary_ydffi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1074376262 groups=["environment"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1484796908]
+shape = SubResource("BoxShape3D_nbpx6")
+disabled = true
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=465107129]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D2" unique_id=980401849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.7252903e-08, 0)
+shape = SubResource("BoxShape3D_kib3a")
+
+[node name="Wall" type="MeshInstance3D" parent="." unique_id=127123919]
+transform = Transform3D(1, 0, 0, 0, 0.001, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+mesh = ExtResource("8_snash")
+surface_material_override/0 = SubResource("ShaderMaterial_pe3vx")
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=1770917757]
+stream = ExtResource("11_iy1y8")
+volume_db = -10.0
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="Click2" type="AudioStreamPlayer" parent="." unique_id=663130577]
+stream = ExtResource("11_iy1y8")
+volume_db = -10.0
+pitch_scale = 0.4
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

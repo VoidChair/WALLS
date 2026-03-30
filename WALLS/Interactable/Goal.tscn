@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://dxyh2bw3214mg"]
+
+[ext_resource type="Script" uid="uid://cw8kj7uqlb6p4" path="res://Interactable/goal.gd" id="1_yro45"]
+[ext_resource type="Shader" uid="uid://dmttwgcvr4uk0" path="res://Interactable/GoalLight.tres" id="2_5p28g"]
+[ext_resource type="ArrayMesh" uid="uid://b3bhc6yijwwmh" path="res://Interactable/Flag.obj" id="2_kkg5w"]
+[ext_resource type="Material" uid="uid://c73v8cstm5tgp" path="res://Environment/CubeMat2.tres" id="3_kkg5w"]
+[ext_resource type="Texture2D" uid="uid://yqm2f5m448bv" path="res://Interactable/GoalRing.png" id="4_ixfqd"]
+[ext_resource type="AudioStream" uid="uid://bpt20sbt7bflp" path="res://SFX/goal.wav" id="8_mxhco"]
+[ext_resource type="AudioStream" uid="uid://d4dvmpkmagvpo" path="res://SFX/goal2.wav" id="9_hhytc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tn2b2"]
+height = 1.0
+radius = 1.4
+
+[sub_resource type="Animation" id="Animation_5p28g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meshes/GlowControl:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Meshes/GlowControl:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ixfqd"]
+resource_name = "hidden"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 30, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meshes/GlowControl:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Meshes/GlowControl:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.01, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5sfky"]
+resource_name = "start"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 30, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meshes/GlowControl:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Meshes/GlowControl:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ixfqd"]
+_data = {
+&"RESET": SubResource("Animation_5p28g"),
+&"hidden": SubResource("Animation_ixfqd"),
+&"start": SubResource("Animation_5sfky")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixfqd"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.8666667, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sfky"]
+cull_mode = 2
+shading_mode = 0
+specular_mode = 1
+albedo_color = Color(0.1, 0.1, 0.089, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2m5hq"]
+shading_mode = 0
+specular_mode = 1
+albedo_color = Color(0.1, 0.1, 0.089, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxhco"]
+cull_mode = 2
+shading_mode = 0
+specular_mode = 1
+albedo_color = Color(0.84, 0.84, 0.84, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mxhco"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhytc"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.9346667, 0.51, 1)
+albedo_texture = ExtResource("4_ixfqd")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yro45"]
+top_radius = 1.0
+bottom_radius = 0.7
+height = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5sfky"]
+render_priority = 0
+shader = ExtResource("2_5p28g")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kkg5w"]
+
+[node name="Goal" type="Area3D" unique_id=940934265]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_yro45")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=9082894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_tn2b2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1674788229]
+libraries/ = SubResource("AnimationLibrary_ixfqd")
+
+[node name="Meshes" type="Node3D" parent="." unique_id=1939897136]
+
+[node name="Flag" type="MeshInstance3D" parent="Meshes" unique_id=1619971410]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("2_kkg5w")
+surface_material_override/0 = SubResource("StandardMaterial3D_ixfqd")
+surface_material_override/1 = SubResource("StandardMaterial3D_5sfky")
+surface_material_override/2 = ExtResource("3_kkg5w")
+surface_material_override/3 = SubResource("StandardMaterial3D_2m5hq")
+surface_material_override/4 = SubResource("StandardMaterial3D_mxhco")
+
+[node name="GlowControl" type="Node3D" parent="Meshes" unique_id=35666211]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+visible = false
+
+[node name="Glow" type="MeshInstance3D" parent="Meshes/GlowControl" unique_id=1853923367]
+transform = Transform3D(-8.305164e-08, 0, 1.9, 0, 1.9, 0, -1.9, 0, -8.305164e-08, 0, 0.01, 0)
+mesh = SubResource("PlaneMesh_mxhco")
+surface_material_override/0 = SubResource("StandardMaterial3D_hhytc")
+
+[node name="Glow2" type="MeshInstance3D" parent="Meshes/GlowControl" unique_id=1721241]
+transform = Transform3D(-8.305164e-08, 0, 1.9, 0, 1.9, 0, -1.9, 0, -8.305164e-08, 0, 0.5, 0)
+visible = false
+mesh = SubResource("CylinderMesh_yro45")
+surface_material_override/0 = SubResource("ShaderMaterial_5sfky")
+
+[node name="Detection" type="StaticBody3D" parent="." unique_id=1262000242 groups=["flag"]]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection" unique_id=901176429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_kkg5w")
+
+[node name="GoalSFX" type="AudioStreamPlayer" parent="." unique_id=591102287]
+stream = ExtResource("8_mxhco")
+bus = &"SFX"
+
+[node name="GoalSFX2" type="AudioStreamPlayer" parent="." unique_id=1650330942]
+stream = ExtResource("9_hhytc")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

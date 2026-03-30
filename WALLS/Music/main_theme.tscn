@@ -1,0 +1,244 @@
+[gd_scene format=3 uid="uid://cuomugae5k0og"]
+
+[ext_resource type="Script" uid="uid://cbn7rlv124g6i" path="res://Music/Music.gd" id="1_68wtj"]
+[ext_resource type="AudioStream" uid="uid://d2vf6ke7fuqlg" path="res://Music/WhyWouldTheyDoThatAreTheyStupid.ogg" id="2_6hsm3"]
+[ext_resource type="AudioStream" uid="uid://dhhr5rjsnnj7q" path="res://Music/WhyWouldTheyDoThatAreTheyStupid(bass).ogg" id="3_d4q17"]
+[ext_resource type="AudioStream" uid="uid://2rth0olb0x51" path="res://Music/WhyWouldTheyDoThatAreTheyStupid(drums).ogg" id="4_6hsm3"]
+[ext_resource type="AudioStream" uid="uid://4h877stfp428" path="res://Music/WhyWouldTheyDoThatAreTheyStupid(chill).ogg" id="5_d4q17"]
+
+[sub_resource type="Animation" id="Animation_6hsm3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music:stream:stream_0/volume")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music:stream:stream_1/volume")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-30.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Music:stream:stream_2/volume")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-30.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Music:stream:stream_3/volume")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-40.0]
+}
+
+[sub_resource type="Animation" id="Animation_py05m"]
+resource_name = "conpemplate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music:stream:stream_0/volume")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -60.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music:stream:stream_1/volume")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -60.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Music:stream:stream_2/volume")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -60.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Music:stream:stream_3/volume")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-40.0, -20.0, -15.0, 10.0]
+}
+
+[sub_resource type="Animation" id="Animation_d4q17"]
+resource_name = "lock_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music:stream:stream_0/volume")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-60.0, -2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music:stream:stream_1/volume")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-60.0, -30.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Music:stream:stream_2/volume")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-60.0, -30.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Music:stream:stream_3/volume")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 1.4000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [10.0, -10.0, -40.0]
+}
+
+[sub_resource type="Animation" id="Animation_c6xif"]
+resource_name = "movement"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music:stream:stream_0/volume")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music:stream:stream_1/volume")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-30.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Music:stream:stream_2/volume")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-60.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Music:stream:stream_3/volume")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-40.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c6xif"]
+_data = {
+&"RESET": SubResource("Animation_6hsm3"),
+&"conpemplate": SubResource("Animation_py05m"),
+&"lock_in": SubResource("Animation_d4q17"),
+&"movement": SubResource("Animation_c6xif")
+}
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_py05m"]
+stream_count = 4
+stream_0/stream = ExtResource("2_6hsm3")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("3_d4q17")
+stream_1/volume = -30.0
+stream_2/stream = ExtResource("4_6hsm3")
+stream_2/volume = -30.0
+stream_3/stream = ExtResource("5_d4q17")
+stream_3/volume = -40.0
+
+[node name="MainTheme" type="Node3D" unique_id=1397752825]
+process_mode = 3
+script = ExtResource("1_68wtj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=598694839]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_c6xif")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1412137680]
+stream = SubResource("AudioStreamSynchronized_py05m")
+bus = &"Music"

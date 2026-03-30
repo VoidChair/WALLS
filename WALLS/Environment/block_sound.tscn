@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://ddcwgl17tmlq7"]
+
+[ext_resource type="Script" uid="uid://cik6a04lb83a5" path="res://Environment/block_sound.gd" id="1_jasnh"]
+[ext_resource type="AudioStream" uid="uid://cpkjlec4wtboq" path="res://SFX/block_click.wav" id="2_3jky2"]
+
+[sub_resource type="Animation" id="Animation_g18ju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xmufh"]
+resource_name = "hidden"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nktr2"]
+resource_name = "start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f2pdr"]
+_data = {
+&"RESET": SubResource("Animation_g18ju"),
+&"hidden": SubResource("Animation_xmufh"),
+&"start": SubResource("Animation_nktr2")
+}
+
+[node name="BlockSound" type="Node3D" unique_id=1878118509]
+script = ExtResource("1_jasnh")
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1913359577]
+stream = ExtResource("2_3jky2")
+pitch_scale = 0.76
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1910903875]
+libraries/ = SubResource("AnimationLibrary_f2pdr")

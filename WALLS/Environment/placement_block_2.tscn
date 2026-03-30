@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://d1ytyebxnq5mx"]
+
+[ext_resource type="Script" uid="uid://btif20kvl3ps0" path="res://Environment/block.gd" id="1_rgjjg"]
+[ext_resource type="ArrayMesh" uid="uid://dxbxtxfo8utxr" path="res://Environment/Cube1.obj" id="2_s5mvy"]
+[ext_resource type="Texture2D" uid="uid://uie7tumrq62m" path="res://Environment/CubeTexture1.png" id="3_rgjjg"]
+
+[sub_resource type="Animation" id="Animation_mdusl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ubndc"]
+resource_name = "hidden"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 30, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wypog"]
+resource_name = "start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 30, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yfu01"]
+_data = {
+&"RESET": SubResource("Animation_mdusl"),
+&"hidden": SubResource("Animation_ubndc"),
+&"start": SubResource("Animation_wypog")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubndc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5mvy"]
+albedo_color = Color(0.39, 0.39, 0.39, 1)
+albedo_texture = ExtResource("3_rgjjg")
+metallic_specular = 0.0
+
+[node name="PlacementBlock" type="Node3D" unique_id=1136778002]
+script = ExtResource("1_rgjjg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1561199380]
+root_node = NodePath("../Mesh")
+libraries/ = SubResource("AnimationLibrary_yfu01")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1823139876 groups=["environment", "grid"]]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=57079359]
+shape = SubResource("BoxShape3D_ubndc")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1531755955]
+cast_shadow = 0
+mesh = ExtResource("2_s5mvy")
+surface_material_override/0 = SubResource("StandardMaterial3D_s5mvy")

@@ -1,0 +1,36 @@
+[gd_resource type="VisualShader" format=3 uid="uid://ccwi8app0545t"]
+
+[ext_resource type="Texture2D" uid="uid://uwsjnm5bk7kg" path="res://Characters/Eyes1.png" id="1_q3h30"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8q3os"]
+texture = ExtResource("1_q3h30")
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_m50tb"]
+default_input_values = [2, true, 3, 0.8]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_08a1f"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_5n6ah"]
+constant = Color(0.36, 0.9573332, 1, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_holkl"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[resource]
+flags/unshaded = true
+nodes/fragment/0/position = Vector2(720, 100)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_8q3os")
+nodes/fragment/2/position = Vector2(20, 160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFresnel_m50tb")
+nodes/fragment/3/position = Vector2(-253.88434, 477.58676)
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorOp_08a1f")
+nodes/fragment/4/position = Vector2(160, 580)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorConstant_5n6ah")
+nodes/fragment/5/position = Vector2(-160, 720)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_holkl")
+nodes/fragment/6/position = Vector2(420, 320)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 5, 0, 4, 1, 4, 0, 6, 1, 2, 0, 0, 0)

@@ -1,0 +1,424 @@
+[gd_scene format=4 uid="uid://cd5pci14nglol"]
+
+[ext_resource type="Script" uid="uid://ddxh38rc1jmqp" path="res://Interactable/Grid/grid_object.gd" id="1_wuhkl"]
+[ext_resource type="ArrayMesh" uid="uid://b4iuhwfs64uun" path="res://Interactable/Grid/WallComponent.obj" id="2_le7ta"]
+[ext_resource type="Material" uid="uid://ljia67hyva7e" path="res://Interactable/Grid/CubeMat3.tres" id="3_0f0ih"]
+[ext_resource type="Material" uid="uid://deix2sd7b23f4" path="res://Interactable/Grid/WallOutline.tres" id="4_j3ymb"]
+[ext_resource type="AudioStream" uid="uid://cf56o4f8wkg4j" path="res://SFX/block_click.ogg" id="5_bsfql"]
+[ext_resource type="AudioStream" uid="uid://yt50pkufjiwk" path="res://SFX/block_thud.ogg" id="6_wnou6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4h20s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0f0ih"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.29000002, 0.29000002, 0.5294118)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0f0ih"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0f0ih"]
+_surfaces = [{
+"aabb": AABB(-0.5288675, -0.5288675, -0.5288675, 1.057735, 1.057735, 1.057735),
+"attribute_data": PackedByteArray("APl/P8AAwDgA+X8/APl/P8AAwDjAAMA4wADAOAD5fz8A+X8/wADAOAD5fz8A+X8/wADAOMAAwDjAAMA4APl/P8AAwDgA+X8/wADAOMAAwDgA+X8/APl/PwD5fz/AAMA4wADAOAD5fz/AAMA4wADAOAD5fz8A+X8/APl/P8AAwDgA+X8/wADAOAD5fz8A+X8/wADAOMAAwDjAAMA4APl/P8AAwDgA+X8/wADAOMAAwDgA+X8/APl/PwD5fz/AAMA4"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAACAAEAAgADAAEABAAGAAUABgAHAAUACAAKAAkACgALAAkADAAOAA0ADgAPAA0AEAASABEAEgATABEAFAAWABUAFgAXABUA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("3GMHv9xjBz/cYwe/3GMHP9xjBz/cYwe/3GMHv9xjBz/cYwc/3GMHP9xjBz/cYwc/3GMHP9xjBz/cYwc/3GMHP9xjB7/cYwc/3GMHv9xjBz/cYwc/3GMHv9xjB7/cYwc/3GMHv9xjBz/cYwc/3GMHv9xjB7/cYwc/3GMHv9xjBz/cYwe/3GMHv9xjB7/cYwe/3GMHP9xjB7/cYwe/3GMHv9xjB7/cYwe/3GMHP9xjB7/cYwc/3GMHv9xjB7/cYwc/3GMHP9xjBz/cYwe/3GMHP9xjB7/cYwe/3GMHP9xjBz/cYwc/3GMHP9xjB7/cYwc/3GMHv9xjBz/cYwe/3GMHv9xjB7/cYwe/3GMHP9xjBz/cYwe/3GMHP9xjB7/cYwe/AYD7/wAA/v8BgPv/AAD+/wGA+/8AAP7/AYD7/wAA/v/9f/9//f//v/1//3/9//+//X//f/3//7/9f/9//f//vwAA+n/+//3/AAD6f/7//f8AAPp//v/9/wAA+n/+//3/AIABAAGA/78AgAEAAYD/vwCAAQABgP+/AIABAAGA/7/9/wCA/v/+//3/AID+//7//f8AgP7//v/9/wCA/v/+/wAAAAD///6/AAAAAP///r8AAAAA///+vwAAAAD///6/")
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_le7ta"]
+shading_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1711t"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="Animation" id="Animation_0f0ih"]
+resource_name = "Hovered"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.5, 0, 0), Vector3(-0.5, 0.2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.95, 1.05, 0.95), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Click:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Thud2:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_le7ta"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.5, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Click:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Thud:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Click2:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Thud2:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bsfql"]
+resource_name = "Squish"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.5, 0.2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 0.9, 1.1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j3ymb"]
+resource_name = "Unhovered"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.5, 0.2, 0), Vector3(-0.5, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 0.9, 1.1), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thud:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Click2:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wnou6"]
+resource_name = "hidden"
+length = 0.01
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.5, 30, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0ynq5"]
+resource_name = "start"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.5, 30, 0), Vector3(-0.5, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 0.9, 1.1), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thud:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3ymb"]
+_data = {
+&"Hovered": SubResource("Animation_0f0ih"),
+&"RESET": SubResource("Animation_le7ta"),
+&"Squish": SubResource("Animation_bsfql"),
+&"Unhovered": SubResource("Animation_j3ymb"),
+&"hidden": SubResource("Animation_wnou6"),
+&"start": SubResource("Animation_0ynq5")
+}
+
+[node name="Blocks2x1" type="StaticBody3D" unique_id=1131297570 groups=["block", "environment"]]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_wuhkl")
+
+[node name="Control" type="Node3D" parent="." unique_id=7292539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="Block1" type="MeshInstance3D" parent="Control" unique_id=2120747194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+cast_shadow = 0
+mesh = ExtResource("2_le7ta")
+surface_material_override/0 = ExtResource("3_0f0ih")
+surface_material_override/1 = ExtResource("4_j3ymb")
+
+[node name="Invalid" type="MeshInstance3D" parent="Control/Block1" unique_id=163742785]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_4h20s")
+surface_material_override/0 = SubResource("StandardMaterial3D_0f0ih")
+
+[node name="RayCast3D" type="RayCast3D" parent="Control/Block1" unique_id=1112675278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.9802322e-08, 0)
+
+[node name="BlockArea1" type="Area3D" parent="Control/Block1" unique_id=964119574 groups=["block"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19999999, 0)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Control/Block1/BlockArea1" unique_id=1040927826]
+shape = SubResource("BoxShape3D_0f0ih")
+
+[node name="Outline" type="MeshInstance3D" parent="Control/Block1" unique_id=1304938832]
+transform = Transform3D(1.9710894, 0, 0, 0, 0.98892695, 0, 0, 0, 1.0549816, -0.5, 0.030384421, 0)
+visible = false
+mesh = SubResource("ArrayMesh_0f0ih")
+surface_material_override/0 = SubResource("StandardMaterial3D_le7ta")
+
+[node name="Block2" type="MeshInstance3D" parent="Control" unique_id=1389532294]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.5, 0.5, 0)
+cast_shadow = 0
+mesh = ExtResource("2_le7ta")
+surface_material_override/0 = ExtResource("3_0f0ih")
+surface_material_override/1 = ExtResource("4_j3ymb")
+
+[node name="Invalid2" type="MeshInstance3D" parent="Control/Block2" unique_id=1959680318]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_4h20s")
+surface_material_override/0 = SubResource("StandardMaterial3D_0f0ih")
+
+[node name="RayCast3D2" type="RayCast3D" parent="Control/Block2" unique_id=1214186061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.9802322e-08, 0)
+
+[node name="BlockArea2" type="Area3D" parent="Control/Block2" unique_id=1798741892 groups=["block"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19999999, 0)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Control/Block2/BlockArea2" unique_id=2054850400]
+shape = SubResource("BoxShape3D_0f0ih")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1727848870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+shape = SubResource("BoxShape3D_1711t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1283158335]
+libraries/ = SubResource("AnimationLibrary_j3ymb")
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=1596920125]
+stream = ExtResource("5_bsfql")
+volume_db = -35.0
+bus = &"SFX"
+
+[node name="Click2" type="AudioStreamPlayer" parent="." unique_id=1021297141]
+stream = ExtResource("5_bsfql")
+volume_db = -45.0
+pitch_scale = 0.78
+bus = &"SFX"
+
+[node name="Thud" type="AudioStreamPlayer" parent="." unique_id=922610884]
+stream = ExtResource("6_wnou6")
+volume_db = -15.0
+pitch_scale = 0.9
+bus = &"SFX"
+
+[node name="Thud2" type="AudioStreamPlayer" parent="." unique_id=1317952761]
+stream = ExtResource("6_wnou6")
+volume_db = -12.0
+pitch_scale = 1.2
+bus = &"SFX"
+
+[connection signal="area_entered" from="Control/Block1/BlockArea1" to="." method="_on_block_area_1_area_entered"]
+[connection signal="area_exited" from="Control/Block1/BlockArea1" to="." method="_on_block_area_1_area_exited"]
+[connection signal="area_entered" from="Control/Block2/BlockArea2" to="." method="_on_block_area_2_area_entered"]
+[connection signal="area_exited" from="Control/Block2/BlockArea2" to="." method="_on_block_area_2_area_exited"]

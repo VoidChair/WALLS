@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://cbsjfvewl5rig"]
+
+[ext_resource type="Script" uid="uid://btif20kvl3ps0" path="res://Environment/block.gd" id="1_6ryfv"]
+[ext_resource type="ArrayMesh" uid="uid://cjlghd4q2pn51" path="res://Environment/Cube2.obj" id="2_6ryfv"]
+[ext_resource type="Material" uid="uid://cyp5x02syatsw" path="res://Environment/CubeMat1.tres" id="3_s6s5d"]
+[ext_resource type="AudioStream" uid="uid://cf56o4f8wkg4j" path="res://SFX/block_click.ogg" id="4_vw2ne"]
+
+[sub_resource type="Animation" id="Animation_mdusl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ubndc"]
+resource_name = "hidden"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 30, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wypog"]
+resource_name = "start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 30, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("../SFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.36666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yfu01"]
+_data = {
+&"RESET": SubResource("Animation_mdusl"),
+&"hidden": SubResource("Animation_ubndc"),
+&"start": SubResource("Animation_wypog")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubndc"]
+
+[node name="TutorialBlock" type="Node3D" unique_id=1136778002]
+script = ExtResource("1_6ryfv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1561199380]
+root_node = NodePath("../Mesh")
+libraries/ = SubResource("AnimationLibrary_yfu01")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1823139876 groups=["environment", "grid"]]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=57079359]
+shape = SubResource("BoxShape3D_ubndc")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1531755955]
+cast_shadow = 0
+mesh = ExtResource("2_6ryfv")
+surface_material_override/0 = ExtResource("3_s6s5d")
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=770979120]
+stream = ExtResource("4_vw2ne")
+volume_db = -25.0
+pitch_scale = 0.86
+bus = &"SFX"

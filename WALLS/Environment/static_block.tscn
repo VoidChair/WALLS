@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://etjasbyyt0jt"]
+
+[ext_resource type="ArrayMesh" uid="uid://dxbxtxfo8utxr" path="res://Environment/Cube1.obj" id="1_1gyei"]
+[ext_resource type="Script" uid="uid://btif20kvl3ps0" path="res://Environment/block.gd" id="1_7ulvf"]
+[ext_resource type="Material" uid="uid://c73v8cstm5tgp" path="res://Environment/CubeMat2.tres" id="2_7ulvf"]
+[ext_resource type="AudioStream" uid="uid://cf56o4f8wkg4j" path="res://SFX/block_click.ogg" id="4_70q1p"]
+
+[sub_resource type="Animation" id="Animation_1gyei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_70q1p"]
+resource_name = "hidden"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 30, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ulvf"]
+resource_name = "start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 30, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("../SFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_70q1p"]
+_data = {
+&"RESET": SubResource("Animation_1gyei"),
+&"hidden": SubResource("Animation_70q1p"),
+&"start": SubResource("Animation_7ulvf")
+}
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jyvk6"]
+data = PackedVector3Array(-0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5)
+
+[node name="StaticBlock" type="Node3D" unique_id=88590884]
+script = ExtResource("1_7ulvf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1636631931]
+root_node = NodePath("../Mesh")
+libraries/ = SubResource("AnimationLibrary_70q1p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1728936849 groups=["environment"]]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2096710434]
+shape = SubResource("ConcavePolygonShape3D_jyvk6")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=702320282]
+cast_shadow = 0
+mesh = ExtResource("1_1gyei")
+surface_material_override/0 = ExtResource("2_7ulvf")
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1662906430]
+stream = ExtResource("4_70q1p")
+volume_db = -25.0
+pitch_scale = 0.86
+bus = &"SFX"

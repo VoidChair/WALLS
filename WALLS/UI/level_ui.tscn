@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://5f2rnm2t2rxq"]
+
+[ext_resource type="Script" uid="uid://co2qfn75r8fde" path="res://UI/level_ui.gd" id="1_moopr"]
+[ext_resource type="Texture2D" uid="uid://wl0fpsig30dt" path="res://UI/PlayIcon.png" id="3_827kd"]
+[ext_resource type="Texture2D" uid="uid://b86o5uf112r1u" path="res://UI/PauseIcon.png" id="4_id740"]
+[ext_resource type="Texture2D" uid="uid://cp22i2naemft3" path="res://UI/PlayIcon2.png" id="5_827kd"]
+[ext_resource type="Texture2D" uid="uid://boah5rqw1wbi4" path="res://UI/SpeedEnabled.png" id="6_hjl4j"]
+[ext_resource type="Texture2D" uid="uid://b7aqh26pbxbv8" path="res://UI/PauseIcon2.png" id="6_id740"]
+[ext_resource type="Texture2D" uid="uid://b2tcwy3y0p8pk" path="res://UI/SpeedDisabled.png" id="7_8ycsl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjl4j"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Animation" id="Animation_827kd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayIcon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1761, 965)]
+}
+
+[sub_resource type="Animation" id="Animation_85ewa"]
+resource_name = "hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayIcon:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1761, 965), Vector2(1761, 950)]
+}
+
+[sub_resource type="Animation" id="Animation_id740"]
+resource_name = "start"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayIcon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1761, 965)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hjl4j"]
+_data = {
+&"RESET": SubResource("Animation_827kd"),
+&"hover": SubResource("Animation_85ewa"),
+&"start": SubResource("Animation_id740")
+}
+
+[node name="LevelUI" type="Control" unique_id=1108000162]
+process_mode = 1
+process_priority = -1
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_moopr")
+
+[node name="PlayIcon" type="Sprite2D" parent="." unique_id=2090589112]
+position = Vector2(1761, 965)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_827kd")
+
+[node name="PlayIcon2" type="Sprite2D" parent="PlayIcon" unique_id=312530714]
+visible = false
+texture = ExtResource("3_827kd")
+
+[node name="PauseIcon" type="Sprite2D" parent="PlayIcon" unique_id=570047305]
+visible = false
+texture = ExtResource("6_id740")
+
+[node name="PauseIcon2" type="Sprite2D" parent="PlayIcon" unique_id=993796544]
+visible = false
+texture = ExtResource("4_id740")
+
+[node name="PlayButton" type="Button" parent="." unique_id=2086958079]
+process_mode = 1
+layout_mode = 0
+offset_left = 1672.0
+offset_top = 882.0
+offset_right = 1855.0
+offset_bottom = 1027.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hjl4j")
+
+[node name="SpeedIcon1x" type="Sprite2D" parent="." unique_id=1175825312]
+position = Vector2(95.00012, 991.00006)
+scale = Vector2(0.515625, 0.515625)
+texture = ExtResource("6_hjl4j")
+
+[node name="SpeedIcon2x" type="Sprite2D" parent="." unique_id=1665186336]
+position = Vector2(138.00012, 991.00006)
+scale = Vector2(0.515625, 0.515625)
+texture = ExtResource("7_8ycsl")
+
+[node name="SpeedIcon2xEnabled" type="Sprite2D" parent="SpeedIcon2x" unique_id=822018215]
+visible = false
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("6_hjl4j")
+
+[node name="SpeedIcon3x" type="Sprite2D" parent="." unique_id=1382496623]
+position = Vector2(181.00012, 991.00006)
+scale = Vector2(0.515625, 0.515625)
+texture = ExtResource("7_8ycsl")
+
+[node name="SpeedIcon3xEnabled" type="Sprite2D" parent="SpeedIcon3x" unique_id=1868374743]
+visible = false
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("6_hjl4j")
+
+[node name="Speedx1" type="Button" parent="." unique_id=346786835]
+process_mode = 1
+layout_mode = 0
+offset_left = 59.000122
+offset_top = 938.0
+offset_right = 119.00012
+offset_bottom = 1041.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hjl4j")
+
+[node name="Speedx2" type="Button" parent="." unique_id=1371101768]
+process_mode = 1
+layout_mode = 0
+offset_left = 120.00012
+offset_top = 938.0
+offset_right = 162.00012
+offset_bottom = 1041.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hjl4j")
+
+[node name="Speedx3" type="Button" parent="." unique_id=590018092]
+process_mode = 1
+layout_mode = 0
+offset_left = 163.00012
+offset_top = 938.0
+offset_right = 212.00012
+offset_bottom = 1041.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hjl4j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hjl4j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1140046333]
+process_mode = 1
+libraries/ = SubResource("AnimationLibrary_hjl4j")
+
+[connection signal="button_down" from="PlayButton" to="." method="_on_play_button_button_down"]
+[connection signal="button_up" from="PlayButton" to="." method="_on_play_button_button_up"]
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="mouse_exited" from="PlayButton" to="." method="_on_play_button_mouse_exited"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="button_down" from="Speedx1" to="." method="_on_speedx_1_button_down"]
+[connection signal="mouse_entered" from="Speedx1" to="." method="_on_speedx_1_mouse_entered"]
+[connection signal="mouse_exited" from="Speedx1" to="." method="_on_speedx_1_mouse_exited"]
+[connection signal="button_down" from="Speedx2" to="." method="_on_speedx_2_button_down"]
+[connection signal="mouse_entered" from="Speedx2" to="." method="_on_speedx_2_mouse_entered"]
+[connection signal="mouse_exited" from="Speedx2" to="." method="_on_speedx_2_mouse_exited"]
+[connection signal="button_down" from="Speedx3" to="." method="_on_speedx_3_button_down"]
+[connection signal="mouse_entered" from="Speedx3" to="." method="_on_speedx_3_mouse_entered"]
+[connection signal="mouse_exited" from="Speedx3" to="." method="_on_speedx_3_mouse_exited"]

@@ -1,0 +1,1350 @@
+[gd_scene format=3 uid="uid://bf3njqumibr8u"]
+
+[ext_resource type="Script" uid="uid://brqly8xogl6v1" path="res://Characters/subject_3.gd" id="1_l2imd"]
+[ext_resource type="PackedScene" uid="uid://5hoeo5c5hc45" path="res://Characters/Subject3.glb" id="2_j1omw"]
+[ext_resource type="Shader" uid="uid://ccwi8app0545t" path="res://Characters/subject_1_body.tres" id="3_v0kou"]
+[ext_resource type="Material" uid="uid://dswxiyjvj0u4c" path="res://Characters/Subject3Outline.tres" id="4_5oekb"]
+[ext_resource type="ArrayMesh" uid="uid://onj4q3xfegyy" path="res://Interactable/PuzzleCube.obj" id="5_pj3u4"]
+[ext_resource type="Material" uid="uid://c64jjaa3lkr8n" path="res://Interactable/PuzzleCubeMat.tres" id="6_6b72f"]
+[ext_resource type="Texture2D" uid="uid://drxhr8l2r7ajo" path="res://Characters/LineOfSight.png" id="6_l2imd"]
+[ext_resource type="Script" uid="uid://byh0kvi53m7gc" path="res://Characters/CollideSolver.gd" id="8_pj3u4"]
+[ext_resource type="AudioStream" uid="uid://cvbadbem76abf" path="res://SFX/walk.wav" id="10_0f86s"]
+[ext_resource type="AudioStream" uid="uid://b5vid3lyx422q" path="res://SFX/block_thud.wav" id="11_6b72f"]
+[ext_resource type="Texture2D" uid="uid://bj2dqschsd8d0" path="res://Characters/Glint.png" id="11_kojmm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n03ys"]
+radius = 0.4
+height = 2.275
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l2imd"]
+render_priority = 0
+shader = ExtResource("3_v0kou")
+
+[sub_resource type="SphereMesh" id="SphereMesh_mtl15"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kojmm"]
+size = Vector3(0.7, 0.8, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2imd"]
+
+[sub_resource type="Animation" id="Animation_2ah1w"]
+resource_name = "intersection"
+length = 1.4
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"intersection_2"
+}, {
+"args": [],
+"method": &"intersection_3"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yidbh"]
+_data = {
+&"intersection": SubResource("Animation_2ah1w")
+}
+
+[sub_resource type="Animation" id="Animation_3sylj"]
+resource_name = "CollisionReset"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looker/Forward:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.10000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.74509805, 0.27058825, 1, 0.6392157), Color(0.7444997, 0.26999998, 1, 0.16862746)]
+}
+
+[sub_resource type="Animation" id="Animation_v0kou"]
+resource_name = "CollisionReset_2"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looker/Forward:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.10000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7444997, 0.26999998, 1, 0.16862746)]
+}
+
+[sub_resource type="Animation" id="Animation_m3uow"]
+resource_name = "Drop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.2, 0.8, 1.2), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looker/Forward:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7444997, 0.26999998, 1, 0.16862746)]
+}
+
+[sub_resource type="Animation" id="Animation_6b72f"]
+resource_name = "Fall"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looker/Forward:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Glimmer:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.40000004, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.001, 0.001, 0.001), Vector3(0.001, 0.001, 0.001), Vector3(1, 1, 1), Vector3(0.001, 0.001, 0.001)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Glimmer:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7qhtx"]
+resource_name = "Hold"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.2, 0.8, 1.2), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vr3qx"]
+resource_name = "Launch"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.9, 1.1, 0.9), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looker/Forward:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0f86s"]
+resource_name = "Look"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looker/Forward:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.7444997, 0.26999998, 1, 0.16862746), Color(0.7444997, 0.26999998, 1, 0.6392157)]
+}
+
+[sub_resource type="Animation" id="Animation_u4tsj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looker/Forward:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshControl/Subject3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.1415925, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Glimmer:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.001, 0.001, 0.001)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Glimmer:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7444997, 0.26999998, 1, 0.16862746)]
+}
+
+[sub_resource type="Animation" id="Animation_u1aj3"]
+resource_name = "Spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.76666665, 0.79999995, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1.2, 0.8, 1.2), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.00999999, 0.001000002, 0.00999999), Vector3(1, 0.1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looker/Forward:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mtl15"]
+resource_name = "Spin"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.1, 1.5, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 0.121, 1), Vector3(0.01, 0.001, 0.01)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshControl/Subject3:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415925, 0), Vector3(0, -3.1415927, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kojmm"]
+resource_name = "Stare"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.0333333, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1.2, 0.8, 1.2), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looker/Forward:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pj3u4"]
+resource_name = "Stretch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/ChestBone/PuzzleCube:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.9, 1.1, 0.9), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looker/Forward:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshControl/Subject3/Armature/Skeleton3D/HeadBone/LineOfSightSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7kb60"]
+resource_name = "start"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qsqhr"]
+_data = {
+&"CollisionReset": SubResource("Animation_3sylj"),
+&"CollisionReset_2": SubResource("Animation_v0kou"),
+&"Drop": SubResource("Animation_m3uow"),
+&"Fall": SubResource("Animation_6b72f"),
+&"Hold": SubResource("Animation_7qhtx"),
+&"Launch": SubResource("Animation_vr3qx"),
+&"Look": SubResource("Animation_0f86s"),
+&"RESET": SubResource("Animation_u4tsj"),
+&"Spawn": SubResource("Animation_u1aj3"),
+&"Spin": SubResource("Animation_mtl15"),
+&"Stare": SubResource("Animation_kojmm"),
+&"Stretch": SubResource("Animation_pj3u4"),
+&"start": SubResource("Animation_7kb60")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5oekb"]
+animation = &"Ascend"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u1aj3"]
+animation = &"LookLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7kb60"]
+animation = &"LookLeftCube"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0f86s"]
+animation = &"LookLeftKidnap"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_3sylj"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_u1aj3")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_7kb60")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_0f86s")
+blend_point_2/pos = -1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j1omw"]
+animation = &"LookRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l2imd"]
+animation = &"LookRightCube"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v0kou"]
+animation = &"LookRightKidnap"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_5oekb"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_j1omw")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_l2imd")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_v0kou")
+blend_point_2/pos = -1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qsqhr"]
+animation = &"WalkCube"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mtl15"]
+animation = &"IdleCube"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_u1aj3"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_qsqhr")
+blend_point_0/pos = 3.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_mtl15")
+blend_point_1/pos = 0.0
+max_space = 10.0
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_kojmm"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3sylj"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vr3qx"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_2ah1w"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3sylj")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_vr3qx")
+blend_point_1/pos = 3.0
+max_space = 10.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_yidbh"]
+graph_offset = Vector2(-422.2942, 110.79053)
+nodes/output/position = Vector2(700, 140)
+nodes/IdleWalk/node = SubResource("AnimationNodeBlendSpace1D_2ah1w")
+nodes/IdleWalk/position = Vector2(-220, 160)
+nodes/CubeHold/node = SubResource("AnimationNodeBlendSpace1D_u1aj3")
+nodes/CubeHold/position = Vector2(-220, 400)
+nodes/CubeSwitch/node = SubResource("AnimationNodeBlend2_kojmm")
+nodes/CubeSwitch/position = Vector2(380, 220)
+node_connections = [&"output", 0, &"CubeSwitch", &"CubeSwitch", 0, &"IdleWalk", &"CubeSwitch", 1, &"CubeHold"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6b72f"]
+animation = &"Sit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kojmm"]
+animation = &"Stare"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bh81o"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vr3qx"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"left"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2ah1w"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"go"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j1omw"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"look"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l2imd"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"go"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pj3u4"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"ascend"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6b72f"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"stare"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hys1f"]
+advance_mode = 2
+advance_condition = &"sit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v0kou"]
+advance_mode = 2
+advance_condition = &"go"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bh81o"]
+states/Ascend/node = SubResource("AnimationNodeAnimation_5oekb")
+states/Ascend/position = Vector2(440, 190)
+states/End/position = Vector2(943, 100)
+states/LookLeft/node = SubResource("AnimationNodeBlendSpace1D_3sylj")
+states/LookLeft/position = Vector2(695, 223)
+states/LookRight/node = SubResource("AnimationNodeBlendSpace1D_5oekb")
+states/LookRight/position = Vector2(690, 100)
+states/Movement/node = SubResource("AnimationNodeBlendTree_yidbh")
+states/Movement/position = Vector2(440, 100)
+states/Sit/node = SubResource("AnimationNodeAnimation_6b72f")
+states/Sit/position = Vector2(598, -26)
+states/Stare/node = SubResource("AnimationNodeAnimation_kojmm")
+states/Stare/position = Vector2(440, -26)
+transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_bh81o"), "Movement", "LookLeft", SubResource("AnimationNodeStateMachineTransition_vr3qx"), "LookLeft", "Movement", SubResource("AnimationNodeStateMachineTransition_2ah1w"), "Movement", "LookRight", SubResource("AnimationNodeStateMachineTransition_j1omw"), "LookRight", "Movement", SubResource("AnimationNodeStateMachineTransition_l2imd"), "Movement", "Ascend", SubResource("AnimationNodeStateMachineTransition_pj3u4"), "Movement", "Stare", SubResource("AnimationNodeStateMachineTransition_6b72f"), "Stare", "Sit", SubResource("AnimationNodeStateMachineTransition_hys1f"), "Sit", "Movement", SubResource("AnimationNodeStateMachineTransition_v0kou")]
+graph_offset = Vector2(-153, -137)
+
+[node name="Subject3" type="CharacterBody3D" unique_id=1566337552 groups=["subject"]]
+script = ExtResource("1_l2imd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=369867475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1375, 0)
+shape = SubResource("CapsuleShape3D_n03ys")
+disabled = true
+
+[node name="MeshControl" type="Node3D" parent="." unique_id=621335787]
+
+[node name="Subject3" parent="MeshControl" unique_id=928129430 instance=ExtResource("2_j1omw")]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="MeshControl/Subject3/Armature" parent_id_path=PackedInt32Array(928129430, 399480204) index="0" unique_id=1128742136]
+bones/1/position = Vector3(-3.346707e-07, 0.447577, 2.1535585e-13)
+bones/1/rotation = Quaternion(3.8815637e-05, 1.4856387e-06, -6.035989e-07, 1)
+bones/2/rotation = Quaternion(-0.00074714294, -2.4075396e-06, 4.996665e-07, 0.99999976)
+bones/3/position = Vector3(0.23213577, -0.11905301, -0.00072356715)
+bones/3/rotation = Quaternion(-0.0058047627, -0.009652884, -0.89227813, 0.45134577)
+bones/4/rotation = Quaternion(-0.01929191, 0.012311934, -0.19418013, 0.98069894)
+bones/5/position = Vector3(-0.25456977, -0.121037535, -0.00075450086)
+bones/5/rotation = Quaternion(-0.0013055551, 0.0086005125, 0.9020766, 0.43148828)
+bones/6/rotation = Quaternion(-0.020303506, -0.014515924, 0.20049615, 0.9793766)
+bones/7/position = Vector3(-4.4913268e-14, 0.2999195, -3.957986e-13)
+bones/7/rotation = Quaternion(-0.02840506, 1.065194e-06, 5.182385e-08, 0.9995965)
+bones/8/rotation = Quaternion(-0.055649348, -8.882454e-09, 3.9758323e-08, 0.99845046)
+bones/9/rotation = Quaternion(0.052443936, 1.0577407e-07, 5.961735e-08, 0.99862385)
+bones/10/position = Vector3(-2.994221e-14, -0.09800914, 0.17251617)
+bones/11/position = Vector3(0.14825274, 0.31658673, 5.988709e-06)
+bones/11/rotation = Quaternion(0.0019512007, -0.010502502, 0.9983971, -0.055579662)
+bones/12/rotation = Quaternion(0.018246643, 0.0018202252, -0.020264182, 0.9996266)
+bones/13/position = Vector3(-0.1527601, 0.31787267, 9.121962e-06)
+bones/13/rotation = Quaternion(-0.001795609, -0.009936489, 0.9976544, 0.06770394)
+bones/14/rotation = Quaternion(0.017938837, -0.0019456114, 0.047089856, 0.9987277)
+
+[node name="Body" parent="MeshControl/Subject3/Armature/Skeleton3D" index="0" unique_id=1700319036]
+cast_shadow = 0
+surface_material_override/0 = SubResource("ShaderMaterial_l2imd")
+
+[node name="Outline" parent="MeshControl/Subject3/Armature/Skeleton3D" index="1" unique_id=965317487]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("4_5oekb")
+
+[node name="ChestBone" type="BoneAttachment3D" parent="MeshControl/Subject3/Armature/Skeleton3D" index="2" unique_id=887064458]
+transform = Transform3D(1, 2.0713668e-07, -1.8427929e-06, -2.0452609e-07, 0.999999, 0.0014166541, 1.8430842e-06, -0.0014166541, 0.999999, -0.00050373905, 0.6007753, 2.4304843e-05)
+bone_name = "Chest"
+bone_idx = 2
+
+[node name="PuzzleCube" type="MeshInstance3D" parent="MeshControl/Subject3/Armature/Skeleton3D/ChestBone" unique_id=1435536407]
+transform = Transform3D(-0.75187975, -5.422113e-05, 0.00024475725, -4.110547e-05, 0.75088096, 0.040052436, -0.00024729787, 0.04004881, -0.7508123, 0.00018694854, 0.06795287, -0.6722151)
+visible = false
+mesh = ExtResource("5_pj3u4")
+surface_material_override/0 = ExtResource("6_6b72f")
+surface_material_override/1 = ExtResource("4_5oekb")
+surface_material_override/2 = ExtResource("4_5oekb")
+
+[node name="HeadBone" type="BoneAttachment3D" parent="MeshControl/Subject3/Armature/Skeleton3D" index="3" unique_id=1767125352]
+transform = Transform3D(1, -4.286095e-08, 5.0314964e-07, 1.0262905e-08, 0.99791056, 0.06460957, -5.0486767e-07, -0.064609565, 0.9979106, -0.0005036431, 1.2805313, -0.044928614)
+bone_name = "Head.002"
+bone_idx = 9
+
+[node name="LineOfSightSprite" type="Sprite3D" parent="MeshControl/Subject3/Armature/Skeleton3D/HeadBone" unique_id=1540374732]
+transform = Transform3D(-0.64999974, -2.3560477e-07, -4.012874e-09, -2.1125341e-09, 0.059038945, -0.49962974, 1.3786283e-07, -1.1099316, -0.026576059, -2.9685907e-08, -0.89714164, -1.5588233)
+modulate = Color(0.7444997, 0.26999998, 1, 0.16862746)
+texture = ExtResource("6_l2imd")
+
+[node name="Shadow" type="MeshInstance3D" parent="MeshControl" unique_id=614567598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+visible = false
+cast_shadow = 3
+mesh = SubResource("SphereMesh_mtl15")
+
+[node name="Looker" type="Node3D" parent="." unique_id=5301277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Forward" type="Area3D" parent="Looker" unique_id=1266641365]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Looker/Forward" unique_id=1546644856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 0.025000036, 0.5999999)
+shape = SubResource("BoxShape3D_kojmm")
+
+[node name="Left" type="RayCast3D" parent="Looker" unique_id=306777438]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0.3)
+target_position = Vector3(0, 0, 3.2)
+collision_mask = 5
+
+[node name="Left2" type="RayCast3D" parent="Looker" unique_id=1447069583]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.3)
+target_position = Vector3(0, 0, 3.2)
+collision_mask = 5
+
+[node name="Right" type="RayCast3D" parent="Looker" unique_id=866384741]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0.3)
+target_position = Vector3(0, 0, 3.2)
+collision_mask = 5
+
+[node name="Right2" type="RayCast3D" parent="Looker" unique_id=1163548]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, -0.3)
+target_position = Vector3(0, 0, 3.2)
+collision_mask = 5
+
+[node name="Front" type="RayCast3D" parent="Looker" unique_id=1837692273]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 0)
+target_position = Vector3(0, 0, 1.3)
+collision_mask = 5
+
+[node name="PitDetect" type="RayCast3D" parent="Looker" unique_id=1401891465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.4, 0.34999996)
+collision_mask = 4
+
+[node name="PitDetect2" type="RayCast3D" parent="Looker" unique_id=829418022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.4, 0.34999996)
+collision_mask = 4
+
+[node name="PitDetectRight" type="RayCast3D" parent="Looker" unique_id=1146630593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.4, 0.2)
+collision_mask = 4
+
+[node name="PitDetectRight2" type="RayCast3D" parent="Looker" unique_id=1646568551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.4, -0.2)
+collision_mask = 4
+
+[node name="PitDetectLeft" type="RayCast3D" parent="Looker" unique_id=1597638462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.4, 0.2)
+collision_mask = 4
+
+[node name="PitDetectLeft2" type="RayCast3D" parent="Looker" unique_id=382586464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.4, -0.2)
+collision_mask = 4
+
+[node name="ForwardPosition" type="Node3D" parent="Looker" unique_id=254343744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9)
+
+[node name="CubeCollBody" type="StaticBody3D" parent="Looker" unique_id=1727357847 node_paths=PackedStringArray("root") groups=["subject"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+script = ExtResource("8_pj3u4")
+root = NodePath("../..")
+
+[node name="CubeColl" type="CollisionShape3D" parent="Looker/CubeCollBody" unique_id=2142595136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93750006, 1.5)
+shape = SubResource("BoxShape3D_l2imd")
+disabled = true
+
+[node name="TimerAnim" type="AnimationPlayer" parent="." unique_id=977055760]
+libraries/ = SubResource("AnimationLibrary_yidbh")
+
+[node name="CubeInteractAnim" type="AnimationPlayer" parent="." unique_id=1423959154]
+libraries/ = SubResource("AnimationLibrary_qsqhr")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=418631877]
+root_node = NodePath("../MeshControl/Subject3")
+tree_root = SubResource("AnimationNodeStateMachine_bh81o")
+anim_player = NodePath("../MeshControl/Subject3/AnimationPlayer")
+parameters/conditions/ascend = false
+parameters/conditions/go = false
+parameters/conditions/left = false
+parameters/conditions/look = false
+parameters/conditions/sit = false
+parameters/conditions/stare = false
+parameters/LookLeft/blend_position = 0.0
+parameters/LookRight/blend_position = 0.0
+parameters/Movement/IdleWalk/blend_position = 0.0
+parameters/Movement/CubeHold/blend_position = 0.00694444444444444
+parameters/Movement/CubeSwitch/blend_amount = 0.00694444444444444
+
+[node name="Glimmer" type="Sprite3D" parent="." unique_id=1002461083]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
+visible = false
+billboard = 1
+texture = ExtResource("11_kojmm")
+
+[node name="Dots" type="Node3D" parent="." unique_id=1131853430]
+
+[node name="TrailTimer" type="Timer" parent="." unique_id=2048841471]
+wait_time = 0.35
+
+[node name="WalkSFX" type="AudioStreamPlayer" parent="." unique_id=865544656]
+stream = ExtResource("10_0f86s")
+volume_db = -20.0
+pitch_scale = 1.6
+bus = &"SFX"
+
+[node name="SitSFX" type="AudioStreamPlayer" parent="." unique_id=120264453]
+stream = ExtResource("10_0f86s")
+volume_db = -15.0
+pitch_scale = 1.21
+bus = &"SFX"
+
+[node name="SitSFX2" type="AudioStreamPlayer" parent="." unique_id=1537069809]
+stream = ExtResource("11_6b72f")
+volume_db = -10.0
+pitch_scale = 0.9
+bus = &"SFX"
+
+[connection signal="area_entered" from="Looker/Forward" to="." method="_on_forward_area_entered"]
+[connection signal="body_entered" from="Looker/Forward" to="." method="_on_forward_body_entered"]
+[connection signal="timeout" from="TrailTimer" to="." method="_on_trail_timer_timeout"]
+
+[editable path="MeshControl/Subject3"]

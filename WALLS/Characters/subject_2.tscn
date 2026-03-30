@@ -1,0 +1,683 @@
+[gd_scene format=3 uid="uid://cldux2qwih24d"]
+
+[ext_resource type="Script" uid="uid://duwvbut6cyk4w" path="res://Characters/subject_2.gd" id="1_0bj6x"]
+[ext_resource type="PackedScene" uid="uid://3pbeoq3p6iuh" path="res://Characters/Subject2.glb" id="2_uvx1g"]
+[ext_resource type="Material" uid="uid://bhh8jtnm5fj74" path="res://Characters/Subject2Body.tres" id="3_uvx1g"]
+[ext_resource type="Material" uid="uid://b3o37owhp3w2q" path="res://Characters/Subject2Outline.tres" id="4_6c00u"]
+[ext_resource type="Texture2D" uid="uid://bj2dqschsd8d0" path="res://Characters/Glint.png" id="6_0bj6x"]
+[ext_resource type="AudioStream" uid="uid://3j8jjmabvrxp" path="res://SFX/atonalThud.wav" id="6_6c00u"]
+[ext_resource type="AudioStream" uid="uid://cvbadbem76abf" path="res://SFX/walk.wav" id="7_6c00u"]
+[ext_resource type="AudioStream" uid="uid://741o635156hj" path="res://SFX/fall.wav" id="8_ra687"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n03ys"]
+radius = 0.1
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_mtl15"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3uow"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="Animation" id="Animation_3sylj"]
+resource_name = "CollisionReset"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshControl:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl/Shadow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.78, 0.078, 0.78)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Looker/Forward:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m3uow"]
+resource_name = "Drop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshControl:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.2, 0.8, 1.2), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl/Shadow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.78, 0.078, 0.78)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Looker/Forward:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Glimmer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Glimmer:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.001, 0.001, 0.001)]
+}
+
+[sub_resource type="Animation" id="Animation_6c00u"]
+resource_name = "Fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshControl:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1.0000001, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl/Shadow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.30000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.78, 0.078, 0.78)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Looker/Forward:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Glimmer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6000001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Glimmer:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.001, 0.001, 0.001), Vector3(0.001, 0.001, 0.001), Vector3(1, 1, 1), Vector3(0.001, 0.001, 0.001)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FallSFX:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.36666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7qhtx"]
+resource_name = "Hold"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshControl:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.2, 0.8, 1.2), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u4tsj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshControl:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl/Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.78, 0.094, 0.78)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Looker/Forward:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Glimmer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Glimmer:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.001, 0.001, 0.001)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MeshControl/Pivot:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FallSFX:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_u1aj3"]
+resource_name = "Spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshControl:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl/Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.00999999, 0.001000002, 0.00999999), Vector3(0.78, 0.078, 0.78)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.10000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Looker/Forward:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mtl15"]
+resource_name = "Spin"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MeshControl:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.1, 1.5, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshControl/Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.78, 0.094, 0.78), Vector3(0.01, 0.001, 0.01)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshControl/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshControl/Pivot:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1.1486986, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(18.849556, 25.132742, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qsqhr"]
+_data = {
+&"CollisionReset": SubResource("Animation_3sylj"),
+&"Drop": SubResource("Animation_m3uow"),
+&"Fall": SubResource("Animation_6c00u"),
+&"Hold": SubResource("Animation_7qhtx"),
+&"RESET": SubResource("Animation_u4tsj"),
+&"Spawn": SubResource("Animation_u1aj3"),
+&"Spin": SubResource("Animation_mtl15")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pkfd3"]
+animation = &"Bonk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f280w"]
+animation = &"Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yu3i6"]
+animation = &"Falling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1jkda"]
+animation = &"Land"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h3cq3"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0bj6x"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_1xpsu"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_h3cq3")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_0bj6x")
+blend_point_1/pos = 5.0
+max_space = 10.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8m2vy"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wry80"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"land"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vq0j8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_utm2v"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"fall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ux6hf"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c2by7"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"bonk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lyeko"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bh81o"]
+states/Bonk/node = SubResource("AnimationNodeAnimation_pkfd3")
+states/Bonk/position = Vector2(396, -44)
+states/End/position = Vector2(943, 100)
+states/Fall/node = SubResource("AnimationNodeAnimation_f280w")
+states/Fall/position = Vector2(623, 100)
+states/Falling/node = SubResource("AnimationNodeAnimation_yu3i6")
+states/Falling/position = Vector2(623, 220)
+states/Land/node = SubResource("AnimationNodeAnimation_1jkda")
+states/Land/position = Vector2(396, 220)
+states/Movement/node = SubResource("AnimationNodeBlendSpace1D_1xpsu")
+states/Movement/position = Vector2(396, 100)
+transitions = ["Fall", "Falling", SubResource("AnimationNodeStateMachineTransition_8m2vy"), "Falling", "Land", SubResource("AnimationNodeStateMachineTransition_wry80"), "Start", "Movement", SubResource("AnimationNodeStateMachineTransition_vq0j8"), "Movement", "Fall", SubResource("AnimationNodeStateMachineTransition_utm2v"), "Land", "Movement", SubResource("AnimationNodeStateMachineTransition_ux6hf"), "Movement", "Bonk", SubResource("AnimationNodeStateMachineTransition_c2by7"), "Bonk", "Movement", SubResource("AnimationNodeStateMachineTransition_lyeko")]
+graph_offset = Vector2(-211, -55)
+
+[node name="Subject2" type="CharacterBody3D" unique_id=1566337552 groups=["subject"]]
+script = ExtResource("1_0bj6x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=369867475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_n03ys")
+disabled = true
+
+[node name="MeshControl" type="Node3D" parent="." unique_id=621335787]
+
+[node name="Pivot" type="Node3D" parent="MeshControl" unique_id=1726642013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Subject2" parent="MeshControl/Pivot" unique_id=532933037 instance=ExtResource("2_uvx1g")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, -0.5, 0)
+
+[node name="Skeleton3D" parent="MeshControl/Pivot/Subject2/Armature" parent_id_path=PackedInt32Array(532933037, 211883591) index="0" unique_id=1758519846]
+bones/1/position = Vector3(0, 0.3945083, 0)
+bones/3/position = Vector3(0.29616863, 0.062279187, -2.59907e-05)
+bones/3/rotation = Quaternion(-0.002403703, -0.012455683, -0.90128195, 0.4330474)
+bones/4/rotation = Quaternion(-0.019564163, 0.012728262, -0.03267351, 0.9991935)
+bones/5/position = Vector3(-0.3041448, 0.06899297, -1.71214e-05)
+bones/5/rotation = Quaternion(-0.002429576, 0.010971307, 0.9244164, 0.38121918)
+bones/6/rotation = Quaternion(-0.019074308, -0.01460119, 0.04548585, 0.9986762)
+bones/8/position = Vector3(0.18302259, 0.33104834, 1.6966342e-07)
+bones/8/rotation = Quaternion(0.0012585075, -0.010751435, 0.9958233, -0.09065776)
+bones/9/rotation = Quaternion(0.019559288, -0.00014886643, -0.008950173, 0.9997687)
+bones/10/position = Vector3(-0.18398157, 0.33182156, -6.5702045e-07)
+bones/10/rotation = Quaternion(-0.0011945069, -0.010264906, 0.99450016, 0.104224354)
+bones/11/rotation = Quaternion(0.019404203, -6.695937e-05, 0.037686355, 0.9991012)
+
+[node name="Body" parent="MeshControl/Pivot/Subject2/Armature/Skeleton3D" index="0" unique_id=1633660]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("3_uvx1g")
+
+[node name="Outline" parent="MeshControl/Pivot/Subject2/Armature/Skeleton3D" index="1" unique_id=1282228201]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("4_6c00u")
+
+[node name="Shadow" type="MeshInstance3D" parent="MeshControl" unique_id=614567598]
+transform = Transform3D(0.78, 0, 0, 0, 0.094, 0, 0, 0, 0.78, 0, 0.1, 0)
+visible = false
+cast_shadow = 3
+mesh = SubResource("SphereMesh_mtl15")
+
+[node name="Looker" type="Node3D" parent="." unique_id=5301277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Forward" type="Area3D" parent="Looker" unique_id=1266641365 groups=["subject"]]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Looker/Forward" unique_id=1546644856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, 0.5)
+shape = SubResource("BoxShape3D_m3uow")
+
+[node name="Left" type="RayCast3D" parent="Looker" unique_id=1705155865]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0.3)
+target_position = Vector3(0, 0, 1.7)
+collision_mask = 4
+
+[node name="Left2" type="RayCast3D" parent="Looker" unique_id=812200405]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.3)
+target_position = Vector3(0, 0, 1.7)
+collision_mask = 4
+
+[node name="Right" type="RayCast3D" parent="Looker" unique_id=1152245950]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0.3)
+target_position = Vector3(0, 0, 1.7)
+collision_mask = 4
+
+[node name="Right2" type="RayCast3D" parent="Looker" unique_id=1839607669]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, -0.3)
+target_position = Vector3(0, 0, 1.7)
+collision_mask = 4
+
+[node name="Front" type="RayCast3D" parent="Looker" unique_id=1039599123]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 0)
+target_position = Vector3(0, 0, 1.7)
+collision_mask = 4
+
+[node name="PitDetect" type="RayCast3D" parent="Looker" unique_id=1133992593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.31465787)
+collision_mask = 4
+
+[node name="PitDetectRight" type="RayCast3D" parent="Looker" unique_id=1590370654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.4, 0.11465788)
+collision_mask = 4
+
+[node name="PitDetectLeft" type="RayCast3D" parent="Looker" unique_id=537486604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.4, 0.11465788)
+collision_mask = 4
+
+[node name="LineOfSight" type="Node3D" parent="Looker" unique_id=627641860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CubeInteractAnim" type="AnimationPlayer" parent="." unique_id=1423959154]
+libraries/ = SubResource("AnimationLibrary_qsqhr")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=418631877]
+root_node = NodePath("../MeshControl/Pivot/Subject2")
+tree_root = SubResource("AnimationNodeStateMachine_bh81o")
+anim_player = NodePath("../MeshControl/Pivot/Subject2/AnimationPlayer")
+parameters/conditions/bonk = false
+parameters/conditions/fall = false
+parameters/conditions/land = false
+parameters/Movement/blend_position = -0.23349631
+
+[node name="Glimmer" type="Sprite3D" parent="." unique_id=1347383831]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
+visible = false
+billboard = 1
+texture = ExtResource("6_0bj6x")
+
+[node name="Dots" type="Node3D" parent="." unique_id=1467012327]
+
+[node name="TrailTimer" type="Timer" parent="." unique_id=1140846873]
+wait_time = 0.2
+
+[node name="BonkSFX" type="AudioStreamPlayer" parent="." unique_id=339119285]
+stream = ExtResource("6_6c00u")
+volume_db = -20.0
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="BonkSFX2" type="AudioStreamPlayer" parent="." unique_id=340675355]
+stream = ExtResource("7_6c00u")
+volume_db = -20.0
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="WalkSFX" type="AudioStreamPlayer" parent="." unique_id=554955668]
+stream = ExtResource("7_6c00u")
+volume_db = -15.0
+pitch_scale = 2.6
+bus = &"SFX"
+
+[node name="FallSFX" type="AudioStreamPlayer" parent="." unique_id=2122980337]
+stream = ExtResource("8_ra687")
+volume_db = -25.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="Looker/Forward" to="." method="_on_forward_body_entered"]
+[connection signal="timeout" from="TrailTimer" to="." method="_on_trail_timer_timeout"]
+
+[editable path="MeshControl/Pivot/Subject2"]

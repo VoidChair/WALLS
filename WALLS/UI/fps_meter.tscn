@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://uwp7wm60p8e2"]
+
+[ext_resource type="Script" uid="uid://dlpc1usj675uq" path="res://UI/fps.gd" id="1_gt3ud"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=510286814]
+
+[node name="Label" type="Label" parent="." unique_id=727831475]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_gt3ud")

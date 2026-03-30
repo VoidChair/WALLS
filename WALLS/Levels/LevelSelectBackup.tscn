@@ -1,0 +1,1201 @@
+[gd_scene format=3 uid="uid://0qa47t17jhi"]
+
+[ext_resource type="Script" uid="uid://d3557hyyovbrv" path="res://Levels/level.gd" id="1_t4k3l"]
+[ext_resource type="PackedScene" uid="uid://5yjc67fx0ndd" path="res://Characters/subject_1.tscn" id="2_c4qkx"]
+[ext_resource type="Material" uid="uid://cp2x8mek8hj23" path="res://Environment/VoidMat.tres" id="3_ks47q"]
+[ext_resource type="PackedScene" uid="uid://cd5pci14nglol" path="res://Interactable/Grid/block_2x1.tscn" id="4_00vps"]
+[ext_resource type="PackedScene" uid="uid://c16bje623tnea" path="res://Environment/level_trigger.tscn" id="5_b50cy"]
+[ext_resource type="PackedScene" uid="uid://etjasbyyt0jt" path="res://Environment/static_block.tscn" id="6_wl2gw"]
+[ext_resource type="PackedScene" uid="uid://b4v2bl34mhpw7" path="res://Environment/placement_block.tscn" id="7_jrkc2"]
+[ext_resource type="PackedScene" uid="uid://bywj3bjc16eko" path="res://UI/fade_anim.tscn" id="8_tc2yv"]
+[ext_resource type="PackedScene" uid="uid://5f2rnm2t2rxq" path="res://UI/level_ui.tscn" id="9_hqhhf"]
+[ext_resource type="PackedScene" uid="uid://risif6yhud7v" path="res://UI/time_limit.tscn" id="10_0m40o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kv5fy"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kxr0u"]
+
+[node name="TestLevel" type="Node3D" unique_id=18007518 node_paths=PackedStringArray("subject_1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 5.5)
+script = ExtResource("1_t4k3l")
+subject_1 = NodePath("Subject1")
+
+[node name="Subject1" parent="." unique_id=1566337552 instance=ExtResource("2_c4qkx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 13)
+starting_rot = 180.0
+
+[node name="DeathPlane" type="Area3D" parent="." unique_id=976945807 groups=["pit"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane" unique_id=648015801]
+shape = SubResource("BoxShape3D_kv5fy")
+
+[node name="Void" type="MeshInstance3D" parent="DeathPlane" unique_id=1533317771]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -6, 0)
+mesh = SubResource("PlaneMesh_kxr0u")
+surface_material_override/0 = ExtResource("3_ks47q")
+
+[node name="Blocks" type="Node3D" parent="." unique_id=1356617527]
+
+[node name="Blocks2x7" parent="Blocks" unique_id=1851633562 instance=ExtResource("4_00vps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 6.5)
+
+[node name="Blocks2x11" parent="Blocks" unique_id=1806617464 instance=ExtResource("4_00vps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 10.5)
+
+[node name="Blocks2x12" parent="Blocks" unique_id=454379842 instance=ExtResource("4_00vps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 8.5)
+
+[node name="Blocks2x8" parent="Blocks" unique_id=1131297570 instance=ExtResource("4_00vps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 0.5)
+
+[node name="Blocks2x13" parent="Blocks" unique_id=348810786 instance=ExtResource("4_00vps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 4.5)
+
+[node name="Blocks2x14" parent="Blocks" unique_id=2087101862 instance=ExtResource("4_00vps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 2.5)
+
+[node name="Interactables" type="Node3D" parent="." unique_id=1675224053]
+
+[node name="LevelTrigger" parent="Interactables" unique_id=340990172 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 9)
+
+[node name="LevelTrigger2" parent="Interactables" unique_id=215542457 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 9)
+level = "2"
+next = 2
+
+[node name="LevelTrigger3" parent="Interactables" unique_id=1706036930 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+level = "3"
+next = 3
+
+[node name="LevelTrigger4" parent="Interactables" unique_id=1015212178 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 9)
+level = "4"
+next = 4
+
+[node name="LevelTrigger5" parent="Interactables" unique_id=638799240 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 9)
+level = "5"
+next = 5
+
+[node name="LevelTrigger6" parent="Interactables" unique_id=431555949 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 5)
+level = "6"
+next = 6
+
+[node name="LevelTrigger7" parent="Interactables" unique_id=713586327 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+level = "7"
+next = 7
+
+[node name="LevelTrigger8" parent="Interactables" unique_id=1687213407 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+level = "8"
+next = 8
+
+[node name="LevelTrigger9" parent="Interactables" unique_id=292386484 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
+level = "9"
+next = 9
+
+[node name="LevelTrigger10" parent="Interactables" unique_id=835261887 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5)
+level = "10"
+next = 10
+
+[node name="LevelTrigger11" parent="Interactables" unique_id=1811659874 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 1)
+level = "11"
+next = 11
+
+[node name="LevelTrigger12" parent="Interactables" unique_id=1109733233 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
+level = "12"
+next = 12
+
+[node name="LevelTrigger13" parent="Interactables" unique_id=589570908 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+level = "13"
+next = 13
+
+[node name="LevelTrigger14" parent="Interactables" unique_id=1725111141 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
+level = "14"
+next = 14
+
+[node name="LevelTrigger15" parent="Interactables" unique_id=1554809440 instance=ExtResource("5_b50cy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1)
+level = "15"
+next = 15
+
+[node name="Cubes" type="Node3D" parent="." unique_id=1286950026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="StaticBlock50" parent="Cubes" unique_id=1664718576 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 11.5)
+
+[node name="StaticBlock52" parent="Cubes" unique_id=1135621442 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 12.5)
+
+[node name="StaticBlock66" parent="Cubes" unique_id=793572773 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 13.5)
+
+[node name="StaticBlock76" parent="Cubes" unique_id=369443089 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 14.5)
+
+[node name="StaticBlock101" parent="Cubes" unique_id=9953358 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 11.5)
+
+[node name="StaticBlock102" parent="Cubes" unique_id=1976886059 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 11.5)
+
+[node name="StaticBlock103" parent="Cubes" unique_id=1847010594 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 12.5)
+
+[node name="StaticBlock104" parent="Cubes" unique_id=1668953340 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 11.5)
+
+[node name="StaticBlock105" parent="Cubes" unique_id=1665950423 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 12.5)
+
+[node name="StaticBlock106" parent="Cubes" unique_id=1358285334 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 13.5)
+
+[node name="StaticBlock107" parent="Cubes" unique_id=1201373288 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 12.5)
+
+[node name="StaticBlock108" parent="Cubes" unique_id=287626003 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 13.5)
+
+[node name="StaticBlock109" parent="Cubes" unique_id=324400716 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 13.5)
+
+[node name="StaticBlock110" parent="Cubes" unique_id=554341379 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 14.5)
+
+[node name="StaticBlock111" parent="Cubes" unique_id=431958339 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 14.5)
+
+[node name="StaticBlock112" parent="Cubes" unique_id=2072899039 instance=ExtResource("6_wl2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 14.5)
+
+[node name="PlacementBlock186" parent="Cubes" unique_id=1414702364 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 5.5)
+
+[node name="PlacementBlock189" parent="Cubes" unique_id=475848543 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 6.5)
+
+[node name="PlacementBlock236" parent="Cubes" unique_id=1462616036 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 7.5)
+
+[node name="PlacementBlock232" parent="Cubes" unique_id=1136778002 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 8.5)
+
+[node name="PlacementBlock240" parent="Cubes" unique_id=287898473 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 9.5)
+
+[node name="PlacementBlock245" parent="Cubes" unique_id=1810765842 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 10.5)
+
+[node name="PlacementBlock281" parent="Cubes" unique_id=536841170 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 11.5)
+
+[node name="PlacementBlock218" parent="Cubes" unique_id=431758454 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 5.5)
+
+[node name="PlacementBlock220" parent="Cubes" unique_id=1483514769 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 5.5)
+
+[node name="PlacementBlock221" parent="Cubes" unique_id=253321800 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 6.5)
+
+[node name="PlacementBlock223" parent="Cubes" unique_id=1107869292 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 5.5)
+
+[node name="PlacementBlock224" parent="Cubes" unique_id=1638347520 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 6.5)
+
+[node name="PlacementBlock226" parent="Cubes" unique_id=384114612 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 6.5)
+
+[node name="PlacementBlock231" parent="Cubes" unique_id=223975675 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 7.5)
+
+[node name="PlacementBlock235" parent="Cubes" unique_id=591157177 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 7.5)
+
+[node name="PlacementBlock237" parent="Cubes" unique_id=437128433 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 7.5)
+
+[node name="PlacementBlock330" parent="Cubes" unique_id=2004844117 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 8.5)
+
+[node name="PlacementBlock332" parent="Cubes" unique_id=1917632116 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 8.5)
+
+[node name="PlacementBlock333" parent="Cubes" unique_id=939777861 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 9.5)
+
+[node name="PlacementBlock334" parent="Cubes" unique_id=480186291 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 8.5)
+
+[node name="PlacementBlock335" parent="Cubes" unique_id=537395529 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 9.5)
+
+[node name="PlacementBlock337" parent="Cubes" unique_id=129639609 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 10.5)
+
+[node name="PlacementBlock340" parent="Cubes" unique_id=401701437 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 9.5)
+
+[node name="PlacementBlock341" parent="Cubes" unique_id=144584783 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 10.5)
+
+[node name="PlacementBlock343" parent="Cubes" unique_id=1205831779 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 10.5)
+
+[node name="PlacementBlock187" parent="Cubes" unique_id=165674837 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, -0.5)
+
+[node name="PlacementBlock190" parent="Cubes" unique_id=1734882012 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0.5)
+
+[node name="PlacementBlock238" parent="Cubes" unique_id=2072792276 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 1.5)
+
+[node name="PlacementBlock233" parent="Cubes" unique_id=1671313068 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 2.5)
+
+[node name="PlacementBlock241" parent="Cubes" unique_id=1740829744 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 3.5)
+
+[node name="PlacementBlock247" parent="Cubes" unique_id=1084102632 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 4.5)
+
+[node name="PlacementBlock219" parent="Cubes" unique_id=958976290 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, -0.5)
+
+[node name="PlacementBlock222" parent="Cubes" unique_id=1132068853 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -0.5)
+
+[node name="PlacementBlock225" parent="Cubes" unique_id=1967998957 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 0.5)
+
+[node name="PlacementBlock227" parent="Cubes" unique_id=67859159 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, -0.5)
+
+[node name="PlacementBlock228" parent="Cubes" unique_id=1355108793 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 0.5)
+
+[node name="PlacementBlock229" parent="Cubes" unique_id=204948752 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 0.5)
+
+[node name="PlacementBlock234" parent="Cubes" unique_id=598345239 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 1.5)
+
+[node name="PlacementBlock239" parent="Cubes" unique_id=582174276 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 1.5)
+
+[node name="PlacementBlock248" parent="Cubes" unique_id=1712039644 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 1.5)
+
+[node name="PlacementBlock502" parent="Cubes" unique_id=390586846 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 2.5)
+
+[node name="PlacementBlock503" parent="Cubes" unique_id=1974181099 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 2.5)
+
+[node name="PlacementBlock504" parent="Cubes" unique_id=1135735035 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 3.5)
+
+[node name="PlacementBlock505" parent="Cubes" unique_id=270291878 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 2.5)
+
+[node name="PlacementBlock506" parent="Cubes" unique_id=1520798642 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 3.5)
+
+[node name="PlacementBlock507" parent="Cubes" unique_id=1950648888 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 4.5)
+
+[node name="PlacementBlock508" parent="Cubes" unique_id=2068073607 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 3.5)
+
+[node name="PlacementBlock509" parent="Cubes" unique_id=596419698 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 4.5)
+
+[node name="PlacementBlock510" parent="Cubes" unique_id=792182342 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 4.5)
+
+[node name="PlacementBlock350" parent="Cubes" unique_id=1976041473 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 11.5)
+
+[node name="PlacementBlock351" parent="Cubes" unique_id=1657007045 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 11.5)
+
+[node name="PlacementBlock352" parent="Cubes" unique_id=77360932 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 11.5)
+
+[node name="PlacementBlock288" parent="Cubes" unique_id=1016054278 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 11.5)
+
+[node name="PlacementBlock295" parent="Cubes" unique_id=639959723 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 12.5)
+
+[node name="PlacementBlock242" parent="Cubes" unique_id=651280450 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 11.5)
+
+[node name="PlacementBlock57" parent="Cubes" unique_id=1371221266 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 12.5)
+
+[node name="PlacementBlock296" parent="Cubes" unique_id=1571395985 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 7.5)
+
+[node name="PlacementBlock303" parent="Cubes" unique_id=1393075637 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 8.5)
+
+[node name="PlacementBlock297" parent="Cubes" unique_id=1365180598 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 7.5)
+
+[node name="PlacementBlock305" parent="Cubes" unique_id=342766987 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 10.5)
+
+[node name="PlacementBlock306" parent="Cubes" unique_id=210916749 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 9.5)
+
+[node name="PlacementBlock307" parent="Cubes" unique_id=1422990947 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 10.5)
+
+[node name="PlacementBlock312" parent="Cubes" unique_id=782234165 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 7.5)
+
+[node name="PlacementBlock313" parent="Cubes" unique_id=762951467 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 8.5)
+
+[node name="PlacementBlock314" parent="Cubes" unique_id=688853370 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 7.5)
+
+[node name="PlacementBlock317" parent="Cubes" unique_id=1387658100 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 10.5)
+
+[node name="PlacementBlock318" parent="Cubes" unique_id=1245585639 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 9.5)
+
+[node name="PlacementBlock319" parent="Cubes" unique_id=2050278918 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 10.5)
+
+[node name="PlacementBlock308" parent="Cubes" unique_id=369396052 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 10.5)
+
+[node name="PlacementBlock309" parent="Cubes" unique_id=139675273 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 10.5)
+
+[node name="PlacementBlock310" parent="Cubes" unique_id=1061466010 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 7.5)
+
+[node name="PlacementBlock315" parent="Cubes" unique_id=2054156959 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 8.5)
+
+[node name="PlacementBlock320" parent="Cubes" unique_id=224483031 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 9.5)
+
+[node name="PlacementBlock316" parent="Cubes" unique_id=445250742 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 10.5)
+
+[node name="PlacementBlock321" parent="Cubes" unique_id=1209415305 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 7.5)
+
+[node name="PlacementBlock311" parent="Cubes" unique_id=689881276 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 7.5)
+
+[node name="PlacementBlock298" parent="Cubes" unique_id=462452890 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 7.5)
+
+[node name="PlacementBlock322" parent="Cubes" unique_id=2129631997 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 10.5)
+
+[node name="PlacementBlock323" parent="Cubes" unique_id=1421785292 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 7.5)
+
+[node name="PlacementBlock324" parent="Cubes" unique_id=695311961 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 8.5)
+
+[node name="PlacementBlock325" parent="Cubes" unique_id=324428328 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 7.5)
+
+[node name="PlacementBlock326" parent="Cubes" unique_id=1109327247 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 10.5)
+
+[node name="PlacementBlock327" parent="Cubes" unique_id=904523054 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 9.5)
+
+[node name="PlacementBlock328" parent="Cubes" unique_id=165949899 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 10.5)
+
+[node name="PlacementBlock329" parent="Cubes" unique_id=481289760 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 10.5)
+
+[node name="PlacementBlock331" parent="Cubes" unique_id=543279554 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 10.5)
+
+[node name="PlacementBlock336" parent="Cubes" unique_id=187029234 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 7.5)
+
+[node name="PlacementBlock338" parent="Cubes" unique_id=1803769256 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 8.5)
+
+[node name="PlacementBlock339" parent="Cubes" unique_id=1431053001 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 9.5)
+
+[node name="PlacementBlock342" parent="Cubes" unique_id=750332356 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 10.5)
+
+[node name="PlacementBlock344" parent="Cubes" unique_id=364064556 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 7.5)
+
+[node name="PlacementBlock346" parent="Cubes" unique_id=1113870118 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 7.5)
+
+[node name="PlacementBlock347" parent="Cubes" unique_id=1657279786 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 7.5)
+
+[node name="PlacementBlock348" parent="Cubes" unique_id=916365387 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 10.5)
+
+[node name="PlacementBlock349" parent="Cubes" unique_id=1518801102 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 10.5)
+
+[node name="PlacementBlock353" parent="Cubes" unique_id=94874732 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 8.5)
+
+[node name="PlacementBlock354" parent="Cubes" unique_id=632929797 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 9.5)
+
+[node name="PlacementBlock355" parent="Cubes" unique_id=539977074 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 10.5)
+
+[node name="PlacementBlock356" parent="Cubes" unique_id=665098349 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 7.5)
+
+[node name="PlacementBlock345" parent="Cubes" unique_id=1501465689 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 7.5)
+
+[node name="PlacementBlock360" parent="Cubes" unique_id=972510250 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 3.5)
+
+[node name="PlacementBlock361" parent="Cubes" unique_id=1915361272 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 4.5)
+
+[node name="PlacementBlock362" parent="Cubes" unique_id=565576771 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 3.5)
+
+[node name="PlacementBlock363" parent="Cubes" unique_id=1697360295 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 6.5)
+
+[node name="PlacementBlock364" parent="Cubes" unique_id=1414767427 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 5.5)
+
+[node name="PlacementBlock365" parent="Cubes" unique_id=509735481 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 6.5)
+
+[node name="PlacementBlock366" parent="Cubes" unique_id=1377997760 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 3.5)
+
+[node name="PlacementBlock367" parent="Cubes" unique_id=432662362 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 4.5)
+
+[node name="PlacementBlock368" parent="Cubes" unique_id=904534422 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 3.5)
+
+[node name="PlacementBlock369" parent="Cubes" unique_id=360675620 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 6.5)
+
+[node name="PlacementBlock370" parent="Cubes" unique_id=1546451338 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 5.5)
+
+[node name="PlacementBlock371" parent="Cubes" unique_id=213251406 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 6.5)
+
+[node name="PlacementBlock372" parent="Cubes" unique_id=1651453150 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 6.5)
+
+[node name="PlacementBlock373" parent="Cubes" unique_id=1264063098 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 6.5)
+
+[node name="PlacementBlock378" parent="Cubes" unique_id=1281495582 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 3.5)
+
+[node name="PlacementBlock379" parent="Cubes" unique_id=179073773 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 4.5)
+
+[node name="PlacementBlock380" parent="Cubes" unique_id=326008989 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 5.5)
+
+[node name="PlacementBlock381" parent="Cubes" unique_id=1092979298 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 6.5)
+
+[node name="PlacementBlock382" parent="Cubes" unique_id=302237334 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 3.5)
+
+[node name="PlacementBlock383" parent="Cubes" unique_id=499913976 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 3.5)
+
+[node name="PlacementBlock384" parent="Cubes" unique_id=1832441792 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.5)
+
+[node name="PlacementBlock385" parent="Cubes" unique_id=694764772 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 6.5)
+
+[node name="PlacementBlock386" parent="Cubes" unique_id=1593339140 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 3.5)
+
+[node name="PlacementBlock387" parent="Cubes" unique_id=866209740 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 4.5)
+
+[node name="PlacementBlock388" parent="Cubes" unique_id=828268461 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 3.5)
+
+[node name="PlacementBlock389" parent="Cubes" unique_id=1260309486 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 6.5)
+
+[node name="PlacementBlock390" parent="Cubes" unique_id=1091641109 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 5.5)
+
+[node name="PlacementBlock391" parent="Cubes" unique_id=1678491197 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 6.5)
+
+[node name="PlacementBlock392" parent="Cubes" unique_id=557056569 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 6.5)
+
+[node name="PlacementBlock393" parent="Cubes" unique_id=1341659470 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 6.5)
+
+[node name="PlacementBlock394" parent="Cubes" unique_id=393980222 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 3.5)
+
+[node name="PlacementBlock395" parent="Cubes" unique_id=1293506366 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 4.5)
+
+[node name="PlacementBlock396" parent="Cubes" unique_id=1500975417 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 5.5)
+
+[node name="PlacementBlock397" parent="Cubes" unique_id=1968868523 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 6.5)
+
+[node name="PlacementBlock398" parent="Cubes" unique_id=1994511892 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 3.5)
+
+[node name="PlacementBlock399" parent="Cubes" unique_id=528395077 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 3.5)
+
+[node name="PlacementBlock400" parent="Cubes" unique_id=947545000 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 3.5)
+
+[node name="PlacementBlock401" parent="Cubes" unique_id=1901202169 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 6.5)
+
+[node name="PlacementBlock402" parent="Cubes" unique_id=1671588646 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 6.5)
+
+[node name="PlacementBlock403" parent="Cubes" unique_id=1420816191 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 4.5)
+
+[node name="PlacementBlock404" parent="Cubes" unique_id=965334184 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 5.5)
+
+[node name="PlacementBlock405" parent="Cubes" unique_id=223711808 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 6.5)
+
+[node name="PlacementBlock406" parent="Cubes" unique_id=1143881667 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 3.5)
+
+[node name="PlacementBlock407" parent="Cubes" unique_id=1311376409 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 3.5)
+
+[node name="PlacementBlock374" parent="Cubes" unique_id=145541202 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 11.5)
+
+[node name="PlacementBlock65" parent="Cubes" unique_id=663698146 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 12.5)
+
+[node name="PlacementBlock289" parent="Cubes" unique_id=130473504 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 11.5)
+
+[node name="PlacementBlock299" parent="Cubes" unique_id=48330442 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 12.5)
+
+[node name="PlacementBlock243" parent="Cubes" unique_id=220897000 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 11.5)
+
+[node name="PlacementBlock59" parent="Cubes" unique_id=39140010 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 12.5)
+
+[node name="PlacementBlock375" parent="Cubes" unique_id=1148816670 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 11.5)
+
+[node name="PlacementBlock67" parent="Cubes" unique_id=1883697898 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 12.5)
+
+[node name="PlacementBlock292" parent="Cubes" unique_id=464425342 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 11.5)
+
+[node name="PlacementBlock300" parent="Cubes" unique_id=1281264415 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 12.5)
+
+[node name="PlacementBlock244" parent="Cubes" unique_id=1591512398 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 11.5)
+
+[node name="PlacementBlock61" parent="Cubes" unique_id=1903813827 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 12.5)
+
+[node name="PlacementBlock408" parent="Cubes" unique_id=1563951332 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 8.5)
+
+[node name="PlacementBlock409" parent="Cubes" unique_id=733437024 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 9.5)
+
+[node name="PlacementBlock410" parent="Cubes" unique_id=276880371 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 10.5)
+
+[node name="PlacementBlock411" parent="Cubes" unique_id=235193010 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 7.5)
+
+[node name="PlacementBlock412" parent="Cubes" unique_id=294163311 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 4.5)
+
+[node name="PlacementBlock413" parent="Cubes" unique_id=2060506821 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 5.5)
+
+[node name="PlacementBlock414" parent="Cubes" unique_id=114308481 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 6.5)
+
+[node name="PlacementBlock415" parent="Cubes" unique_id=1902672555 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 3.5)
+
+[node name="PlacementBlock416" parent="Cubes" unique_id=1227648909 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 11.5)
+
+[node name="PlacementBlock418" parent="Cubes" unique_id=1461653378 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 12.5)
+
+[node name="PlacementBlock420" parent="Cubes" unique_id=1509171706 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 8.5)
+
+[node name="PlacementBlock421" parent="Cubes" unique_id=1136456831 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 9.5)
+
+[node name="PlacementBlock422" parent="Cubes" unique_id=1821580778 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 10.5)
+
+[node name="PlacementBlock423" parent="Cubes" unique_id=31654058 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 7.5)
+
+[node name="PlacementBlock424" parent="Cubes" unique_id=1050745353 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 4.5)
+
+[node name="PlacementBlock425" parent="Cubes" unique_id=2027310472 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 5.5)
+
+[node name="PlacementBlock426" parent="Cubes" unique_id=580101915 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 6.5)
+
+[node name="PlacementBlock427" parent="Cubes" unique_id=1314387053 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 3.5)
+
+[node name="PlacementBlock428" parent="Cubes" unique_id=1788979299 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 11.5)
+
+[node name="PlacementBlock430" parent="Cubes" unique_id=327699189 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 12.5)
+
+[node name="PlacementBlock432" parent="Cubes" unique_id=871802222 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 8.5)
+
+[node name="PlacementBlock433" parent="Cubes" unique_id=1095505552 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 9.5)
+
+[node name="PlacementBlock434" parent="Cubes" unique_id=943944098 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 10.5)
+
+[node name="PlacementBlock435" parent="Cubes" unique_id=870780998 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 7.5)
+
+[node name="PlacementBlock436" parent="Cubes" unique_id=1952588487 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 4.5)
+
+[node name="PlacementBlock437" parent="Cubes" unique_id=387201467 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 5.5)
+
+[node name="PlacementBlock438" parent="Cubes" unique_id=131478869 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 6.5)
+
+[node name="PlacementBlock439" parent="Cubes" unique_id=99410027 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 3.5)
+
+[node name="PlacementBlock440" parent="Cubes" unique_id=1594109015 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 11.5)
+
+[node name="PlacementBlock442" parent="Cubes" unique_id=1619713085 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 12.5)
+
+[node name="PlacementBlock444" parent="Cubes" unique_id=727764855 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 8.5)
+
+[node name="PlacementBlock445" parent="Cubes" unique_id=1489760023 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 9.5)
+
+[node name="PlacementBlock446" parent="Cubes" unique_id=350642796 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 10.5)
+
+[node name="PlacementBlock447" parent="Cubes" unique_id=824048315 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 7.5)
+
+[node name="PlacementBlock448" parent="Cubes" unique_id=2018199068 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 4.5)
+
+[node name="PlacementBlock449" parent="Cubes" unique_id=1859312911 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 5.5)
+
+[node name="PlacementBlock450" parent="Cubes" unique_id=1560335163 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 6.5)
+
+[node name="PlacementBlock451" parent="Cubes" unique_id=933285830 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 3.5)
+
+[node name="PlacementBlock489" parent="Cubes" unique_id=408267472 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 7.5)
+
+[node name="PlacementBlock490" parent="Cubes" unique_id=772888364 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 8.5)
+
+[node name="PlacementBlock491" parent="Cubes" unique_id=541442264 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 9.5)
+
+[node name="PlacementBlock492" parent="Cubes" unique_id=2139708859 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 10.5)
+
+[node name="PlacementBlock493" parent="Cubes" unique_id=541765473 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 3.5)
+
+[node name="PlacementBlock494" parent="Cubes" unique_id=1337378502 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 4.5)
+
+[node name="PlacementBlock495" parent="Cubes" unique_id=2001427598 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 5.5)
+
+[node name="PlacementBlock496" parent="Cubes" unique_id=1076068120 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 6.5)
+
+[node name="PlacementBlock452" parent="Cubes" unique_id=1315192417 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 11.5)
+
+[node name="PlacementBlock454" parent="Cubes" unique_id=71902875 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 12.5)
+
+[node name="PlacementBlock498" parent="Cubes" unique_id=392199210 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 11.5)
+
+[node name="PlacementBlock500" parent="Cubes" unique_id=2105165083 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 12.5)
+
+[node name="PlacementBlock376" parent="Cubes" unique_id=1845346189 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 11.5)
+
+[node name="PlacementBlock69" parent="Cubes" unique_id=1100577617 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 12.5)
+
+[node name="PlacementBlock294" parent="Cubes" unique_id=1014584299 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 11.5)
+
+[node name="PlacementBlock358" parent="Cubes" unique_id=1693632842 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 12.5)
+
+[node name="PlacementBlock246" parent="Cubes" unique_id=124903324 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 11.5)
+
+[node name="PlacementBlock63" parent="Cubes" unique_id=436571241 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 12.5)
+
+[node name="PlacementBlock476" parent="Cubes" unique_id=1720805735 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 8.5)
+
+[node name="PlacementBlock477" parent="Cubes" unique_id=1326222581 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 9.5)
+
+[node name="PlacementBlock478" parent="Cubes" unique_id=414825801 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 10.5)
+
+[node name="PlacementBlock479" parent="Cubes" unique_id=630578729 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 7.5)
+
+[node name="PlacementBlock480" parent="Cubes" unique_id=1113735525 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 4.5)
+
+[node name="PlacementBlock481" parent="Cubes" unique_id=521573492 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 5.5)
+
+[node name="PlacementBlock482" parent="Cubes" unique_id=912181 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 6.5)
+
+[node name="PlacementBlock483" parent="Cubes" unique_id=582647648 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 3.5)
+
+[node name="PlacementBlock417" parent="Cubes" unique_id=756775768 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, -0.5)
+
+[node name="PlacementBlock419" parent="Cubes" unique_id=2022485403 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 0.5)
+
+[node name="PlacementBlock429" parent="Cubes" unique_id=1152251649 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -0.5)
+
+[node name="PlacementBlock431" parent="Cubes" unique_id=242129873 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 2.5)
+
+[node name="PlacementBlock441" parent="Cubes" unique_id=1665149513 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 1.5)
+
+[node name="PlacementBlock443" parent="Cubes" unique_id=5839040 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 2.5)
+
+[node name="PlacementBlock453" parent="Cubes" unique_id=931393350 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -0.5)
+
+[node name="PlacementBlock455" parent="Cubes" unique_id=514961060 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0.5)
+
+[node name="PlacementBlock456" parent="Cubes" unique_id=1173732059 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -0.5)
+
+[node name="PlacementBlock457" parent="Cubes" unique_id=418934912 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 2.5)
+
+[node name="PlacementBlock458" parent="Cubes" unique_id=896876355 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 1.5)
+
+[node name="PlacementBlock459" parent="Cubes" unique_id=215147712 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 2.5)
+
+[node name="PlacementBlock460" parent="Cubes" unique_id=1377416588 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 2.5)
+
+[node name="PlacementBlock461" parent="Cubes" unique_id=474162042 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 2.5)
+
+[node name="PlacementBlock462" parent="Cubes" unique_id=195314061 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -0.5)
+
+[node name="PlacementBlock463" parent="Cubes" unique_id=825631823 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
+
+[node name="PlacementBlock464" parent="Cubes" unique_id=361885384 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
+
+[node name="PlacementBlock465" parent="Cubes" unique_id=1068169198 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2.5)
+
+[node name="PlacementBlock466" parent="Cubes" unique_id=110092536 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -0.5)
+
+[node name="PlacementBlock467" parent="Cubes" unique_id=1622051206 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -0.5)
+
+[node name="PlacementBlock468" parent="Cubes" unique_id=1893104160 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+
+[node name="PlacementBlock469" parent="Cubes" unique_id=1259268505 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 2.5)
+
+[node name="PlacementBlock470" parent="Cubes" unique_id=489527351 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -0.5)
+
+[node name="PlacementBlock471" parent="Cubes" unique_id=1582896668 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0.5)
+
+[node name="PlacementBlock472" parent="Cubes" unique_id=1562989948 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -0.5)
+
+[node name="PlacementBlock473" parent="Cubes" unique_id=1926638882 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 2.5)
+
+[node name="PlacementBlock474" parent="Cubes" unique_id=1631828625 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 1.5)
+
+[node name="PlacementBlock475" parent="Cubes" unique_id=2034275660 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 2.5)
+
+[node name="PlacementBlock484" parent="Cubes" unique_id=1330931534 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 2.5)
+
+[node name="PlacementBlock486" parent="Cubes" unique_id=680160041 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 2.5)
+
+[node name="PlacementBlock488" parent="Cubes" unique_id=1690476800 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -0.5)
+
+[node name="PlacementBlock497" parent="Cubes" unique_id=470880816 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0.5)
+
+[node name="PlacementBlock499" parent="Cubes" unique_id=553106119 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 1.5)
+
+[node name="PlacementBlock501" parent="Cubes" unique_id=371906369 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 2.5)
+
+[node name="PlacementBlock511" parent="Cubes" unique_id=1379080605 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -0.5)
+
+[node name="PlacementBlock512" parent="Cubes" unique_id=105142563 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -0.5)
+
+[node name="PlacementBlock513" parent="Cubes" unique_id=130307459 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, -0.5)
+
+[node name="PlacementBlock514" parent="Cubes" unique_id=1309273068 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 2.5)
+
+[node name="PlacementBlock515" parent="Cubes" unique_id=553077488 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 2.5)
+
+[node name="PlacementBlock516" parent="Cubes" unique_id=1030157025 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 0.5)
+
+[node name="PlacementBlock517" parent="Cubes" unique_id=353583252 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 1.5)
+
+[node name="PlacementBlock518" parent="Cubes" unique_id=88834938 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 2.5)
+
+[node name="PlacementBlock519" parent="Cubes" unique_id=960816269 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, -0.5)
+
+[node name="PlacementBlock520" parent="Cubes" unique_id=702646512 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
+
+[node name="PlacementBlock521" parent="Cubes" unique_id=1909184910 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 0.5)
+
+[node name="PlacementBlock522" parent="Cubes" unique_id=63882149 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 1.5)
+
+[node name="PlacementBlock523" parent="Cubes" unique_id=1620335958 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 2.5)
+
+[node name="PlacementBlock524" parent="Cubes" unique_id=806130017 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -0.5)
+
+[node name="PlacementBlock525" parent="Cubes" unique_id=2584907 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0.5)
+
+[node name="PlacementBlock526" parent="Cubes" unique_id=1902303919 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 1.5)
+
+[node name="PlacementBlock527" parent="Cubes" unique_id=63119509 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 2.5)
+
+[node name="PlacementBlock528" parent="Cubes" unique_id=1019353354 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -0.5)
+
+[node name="PlacementBlock529" parent="Cubes" unique_id=909414234 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
+
+[node name="PlacementBlock530" parent="Cubes" unique_id=1334674893 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.5)
+
+[node name="PlacementBlock531" parent="Cubes" unique_id=198149628 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 2.5)
+
+[node name="PlacementBlock532" parent="Cubes" unique_id=2059008682 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -0.5)
+
+[node name="PlacementBlock533" parent="Cubes" unique_id=594078011 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 0.5)
+
+[node name="PlacementBlock534" parent="Cubes" unique_id=206899246 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 1.5)
+
+[node name="PlacementBlock535" parent="Cubes" unique_id=1853021258 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 2.5)
+
+[node name="PlacementBlock536" parent="Cubes" unique_id=551905128 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -0.5)
+
+[node name="PlacementBlock537" parent="Cubes" unique_id=665873861 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -0.5)
+
+[node name="PlacementBlock538" parent="Cubes" unique_id=471808464 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0.5)
+
+[node name="PlacementBlock539" parent="Cubes" unique_id=1544350821 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 1.5)
+
+[node name="PlacementBlock540" parent="Cubes" unique_id=1178838011 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 2.5)
+
+[node name="PlacementBlock541" parent="Cubes" unique_id=668908953 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0.5)
+
+[node name="PlacementBlock542" parent="Cubes" unique_id=1128957017 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 1.5)
+
+[node name="PlacementBlock543" parent="Cubes" unique_id=12783771 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 2.5)
+
+[node name="PlacementBlock544" parent="Cubes" unique_id=1277713081 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, -0.5)
+
+[node name="PlacementBlock545" parent="Cubes" unique_id=184800885 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, -1.5)
+
+[node name="PlacementBlock546" parent="Cubes" unique_id=1754700960 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -1.5)
+
+[node name="PlacementBlock547" parent="Cubes" unique_id=285312637 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -1.5)
+
+[node name="PlacementBlock548" parent="Cubes" unique_id=55958845 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -1.5)
+
+[node name="PlacementBlock549" parent="Cubes" unique_id=308174424 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -1.5)
+
+[node name="PlacementBlock550" parent="Cubes" unique_id=1743830369 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
+
+[node name="PlacementBlock551" parent="Cubes" unique_id=1626956667 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -1.5)
+
+[node name="PlacementBlock552" parent="Cubes" unique_id=1283552905 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1.5)
+
+[node name="PlacementBlock553" parent="Cubes" unique_id=126860951 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -1.5)
+
+[node name="PlacementBlock554" parent="Cubes" unique_id=1923791691 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -1.5)
+
+[node name="PlacementBlock555" parent="Cubes" unique_id=2067517563 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1.5)
+
+[node name="PlacementBlock556" parent="Cubes" unique_id=1073021271 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -1.5)
+
+[node name="PlacementBlock557" parent="Cubes" unique_id=2054170082 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -1.5)
+
+[node name="PlacementBlock558" parent="Cubes" unique_id=2024224188 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, -1.5)
+
+[node name="PlacementBlock559" parent="Cubes" unique_id=723966075 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, -1.5)
+
+[node name="PlacementBlock560" parent="Cubes" unique_id=464750737 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -1.5)
+
+[node name="PlacementBlock561" parent="Cubes" unique_id=1321025447 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -1.5)
+
+[node name="PlacementBlock562" parent="Cubes" unique_id=1426096244 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -1.5)
+
+[node name="PlacementBlock563" parent="Cubes" unique_id=1862992751 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -1.5)
+
+[node name="PlacementBlock564" parent="Cubes" unique_id=144408173 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -1.5)
+
+[node name="PlacementBlock565" parent="Cubes" unique_id=501285974 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -1.5)
+
+[node name="PlacementBlock566" parent="Cubes" unique_id=1113928501 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, -1.5)
+
+[node name="PlacementBlock567" parent="Cubes" unique_id=1420065313 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, -2.5)
+
+[node name="PlacementBlock568" parent="Cubes" unique_id=160549265 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -2.5)
+
+[node name="PlacementBlock569" parent="Cubes" unique_id=917378692 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -2.5)
+
+[node name="PlacementBlock570" parent="Cubes" unique_id=1351071771 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -2.5)
+
+[node name="PlacementBlock571" parent="Cubes" unique_id=1543463755 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -2.5)
+
+[node name="PlacementBlock572" parent="Cubes" unique_id=1886754356 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -2.5)
+
+[node name="PlacementBlock573" parent="Cubes" unique_id=2080319923 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -2.5)
+
+[node name="PlacementBlock574" parent="Cubes" unique_id=41836602 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.5)
+
+[node name="PlacementBlock575" parent="Cubes" unique_id=908395740 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -2.5)
+
+[node name="PlacementBlock576" parent="Cubes" unique_id=1744385289 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -2.5)
+
+[node name="PlacementBlock577" parent="Cubes" unique_id=557748492 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -2.5)
+
+[node name="PlacementBlock578" parent="Cubes" unique_id=424247520 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -2.5)
+
+[node name="PlacementBlock579" parent="Cubes" unique_id=524114312 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -2.5)
+
+[node name="PlacementBlock580" parent="Cubes" unique_id=2058996340 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, -2.5)
+
+[node name="PlacementBlock581" parent="Cubes" unique_id=437285837 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, -2.5)
+
+[node name="PlacementBlock582" parent="Cubes" unique_id=1473191193 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -2.5)
+
+[node name="PlacementBlock583" parent="Cubes" unique_id=534796439 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -2.5)
+
+[node name="PlacementBlock584" parent="Cubes" unique_id=1646104311 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -2.5)
+
+[node name="PlacementBlock585" parent="Cubes" unique_id=429025279 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -2.5)
+
+[node name="PlacementBlock586" parent="Cubes" unique_id=191224065 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -2.5)
+
+[node name="PlacementBlock587" parent="Cubes" unique_id=593712472 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -2.5)
+
+[node name="PlacementBlock588" parent="Cubes" unique_id=1128364769 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, -2.5)
+
+[node name="PlacementBlock485" parent="Cubes" unique_id=212642678 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 11.5)
+
+[node name="PlacementBlock487" parent="Cubes" unique_id=1563530737 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 12.5)
+
+[node name="PlacementBlock377" parent="Cubes" unique_id=1238988477 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 11.5)
+
+[node name="PlacementBlock71" parent="Cubes" unique_id=1114735574 instance=ExtResource("7_jrkc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 12.5)
+
+[node name="FadeAnim" parent="." unique_id=1666654621 instance=ExtResource("8_tc2yv")]
+
+[node name="LevelUI" parent="." unique_id=1108000162 instance=ExtResource("9_hqhhf")]
+
+[node name="TimeLimit" parent="." unique_id=1340037575 instance=ExtResource("10_0m40o")]
+
+[connection signal="body_entered" from="DeathPlane" to="." method="_on_death_plane_body_entered"]

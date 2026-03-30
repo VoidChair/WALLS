@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://ce3ig1eqiqapy"]
+
+[ext_resource type="Script" uid="uid://eww5l8emrlcr" path="res://Levels/root_scene.gd" id="1_4xinc"]
+[ext_resource type="Material" uid="uid://cp2x8mek8hj23" path="res://Environment/VoidMat.tres" id="1_v4ajr"]
+[ext_resource type="PackedScene" uid="uid://bqw3oqvddyjrg" path="res://Levels/TitleScreen.tscn" id="3_c2m3l"]
+[ext_resource type="PackedScene" uid="uid://bq4r1pu8cxar6" path="res://Levels/Level1.tscn" id="3_y5imb"]
+[ext_resource type="PackedScene" uid="uid://cuomugae5k0og" path="res://Music/main_theme.tscn" id="4_8nx57"]
+[ext_resource type="PackedScene" uid="uid://huhec6fm1a51" path="res://Levels/LevelSelect.tscn" id="4_8vlp6"]
+[ext_resource type="PackedScene" uid="uid://dgxwp67hnmqmh" path="res://Levels/Level2.tscn" id="4_c2m3l"]
+[ext_resource type="PackedScene" uid="uid://bx8n4fwdnemlp" path="res://UI/pause_menu.tscn" id="4_pbtkx"]
+[ext_resource type="PackedScene" uid="uid://b2hv24fag1hbu" path="res://Levels/Level3.tscn" id="5_8vlp6"]
+[ext_resource type="AudioStream" uid="uid://cf56o4f8wkg4j" path="res://SFX/block_click.ogg" id="5_72fqj"]
+[ext_resource type="PackedScene" uid="uid://752yl0f24pdi" path="res://Levels/TestLevel.tscn" id="6_1gsh3"]
+[ext_resource type="PackedScene" uid="uid://dwxc10731vux3" path="res://Levels/Level4.tscn" id="8_dxs6a"]
+[ext_resource type="PackedScene" uid="uid://cbpgrluhsre8o" path="res://Levels/Level5.tscn" id="9_pbtkx"]
+[ext_resource type="PackedScene" uid="uid://c7moj8i7cxagp" path="res://Levels/Level6.tscn" id="10_8nx57"]
+[ext_resource type="PackedScene" uid="uid://cl5oia1owca6f" path="res://Levels/Level7.tscn" id="11_72fqj"]
+[ext_resource type="PackedScene" uid="uid://degni2bfgajmv" path="res://Levels/Level8.tscn" id="12_1gsh3"]
+[ext_resource type="PackedScene" uid="uid://ddv2scq3j1h0c" path="res://Levels/Level9.tscn" id="13_5nk8j"]
+[ext_resource type="PackedScene" uid="uid://bt2636u7pmx8u" path="res://Levels/Level10.tscn" id="14_cxyri"]
+[ext_resource type="PackedScene" uid="uid://syctesd77uy8" path="res://Levels/Level11.tscn" id="15_dki1k"]
+[ext_resource type="PackedScene" uid="uid://bfnntwrkv7ph1" path="res://Levels/Level12.tscn" id="16_f5wql"]
+[ext_resource type="PackedScene" uid="uid://cmg5wv0dntkqw" path="res://Levels/Level13.tscn" id="17_nwd3b"]
+[ext_resource type="PackedScene" uid="uid://8vtnt68l3dlm" path="res://Levels/Level14.tscn" id="18_pd6bp"]
+[ext_resource type="PackedScene" uid="uid://bp6i6ve6as5cv" path="res://Levels/Level15.tscn" id="19_8qu0j"]
+[ext_resource type="PackedScene" uid="uid://blsoj5auuak4i" path="res://Levels/EndScreen.tscn" id="24_5nk8j"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4kvgd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8nx57"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_2yvdw"]
+sky_material = SubResource("ProceduralSkyMaterial_8nx57")
+
+[sub_resource type="Environment" id="Environment_72fqj"]
+background_mode = 2
+sky = SubResource("Sky_2yvdw")
+tonemap_mode = 2
+adjustment_enabled = true
+adjustment_saturation = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_pbtkx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8nx57"]
+height = 1.0
+radius = 0.3
+
+[node name="RootScene" type="Node3D" unique_id=1995517044]
+script = ExtResource("1_4xinc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=429607343]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -13, 0)
+mesh = SubResource("PlaneMesh_4kvgd")
+surface_material_override/0 = ExtResource("1_v4ajr")
+
+[node name="PauseMenu" parent="." unique_id=244162031 node_paths=PackedStringArray("music") instance=ExtResource("4_pbtkx")]
+visible = false
+music = NodePath("../MainTheme")
+
+[node name="MainTheme" parent="." unique_id=1397752825 instance=ExtResource("4_8nx57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 81, -18)
+
+[node name="Blackness" type="ColorRect" parent="." unique_id=999130117]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ShowLight" type="DirectionalLight3D" parent="." unique_id=2067367159]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 1, 0, -1, -4.3711385e-08, 11, 8.448648, 17)
+light_energy = 0.7
+shadow_enabled = true
+
+[node name="Highlight" type="DirectionalLight3D" parent="." unique_id=1234389129]
+transform = Transform3D(0.88644093, -0.03613213, -0.46142927, 0.38248473, -0.504203, 0.77426404, -0.2606298, -0.862829, -0.43312615, 11, 8.448648, 13.626692)
+light_energy = 0.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1903741864]
+environment = SubResource("Environment_72fqj")
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=407020447]
+stream = ExtResource("5_72fqj")
+volume_db = -25.0
+pitch_scale = 0.86
+bus = &"SFX"
+
+[node name="Cursor" type="Node3D" parent="." unique_id=1787548693]
+visible = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cursor" unique_id=2116828179]
+visible = false
+mesh = SubResource("BoxMesh_pbtkx")
+
+[node name="CursorArea" type="Area3D" parent="Cursor" unique_id=1113058651 groups=["cursor"]]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CursorColl" type="CollisionShape3D" parent="Cursor/CursorArea" unique_id=864289391]
+shape = SubResource("CylinderShape3D_8nx57")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=231869642]
+transform = Transform3D(-1, 7.5710346e-08, -4.3711392e-08, 0, 0.50000006, 0.8660254, 8.742278e-08, 0.8660254, -0.50000006, -17.5, 34, -9.5)
+current = true
+fov = 30.0
+size = 18.993
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=88690089]
+transform = Transform3D(-1, 7.5710346e-08, -4.3711392e-08, -4.371139e-08, 5.9604645e-08, 1, 7.5710346e-08, 1, -5.9604645e-08, -17.5, 35, 9.5)
+projection = 1
+fov = 30.0
+size = 28.608
+
+[node name="TestLevel" parent="." unique_id=18007518 instance=ExtResource("6_1gsh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, 16.5)
+visible = false
+
+[node name="Levels" type="Node3D" parent="." unique_id=403962551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="LevelSelect" parent="Levels" unique_id=315766708 node_paths=PackedStringArray("MainTheme") instance=ExtResource("4_8vlp6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -50, -0.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level1" parent="Levels" unique_id=466006210 node_paths=PackedStringArray("MainTheme") instance=ExtResource("3_y5imb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -50, 7.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level2" parent="Levels" unique_id=1628404685 node_paths=PackedStringArray("MainTheme") instance=ExtResource("4_c2m3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, -50, 6.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level3" parent="Levels" unique_id=492991175 node_paths=PackedStringArray("MainTheme") instance=ExtResource("5_8vlp6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, -50, 8.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level4" parent="Levels" unique_id=1588348631 node_paths=PackedStringArray("MainTheme") instance=ExtResource("8_dxs6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, -50, 5.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level5" parent="Levels" unique_id=1704218897 node_paths=PackedStringArray("MainTheme") instance=ExtResource("9_pbtkx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -50, 4.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level6" parent="Levels" unique_id=1137579155 node_paths=PackedStringArray("MainTheme") instance=ExtResource("10_8nx57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, -50, 5.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level7" parent="Levels" unique_id=1598325782 node_paths=PackedStringArray("MainTheme") instance=ExtResource("11_72fqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, -50, 6.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level8" parent="Levels" unique_id=232242818 node_paths=PackedStringArray("MainTheme") instance=ExtResource("12_1gsh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, -50, 4.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level9" parent="Levels" unique_id=136677768 node_paths=PackedStringArray("MainTheme") instance=ExtResource("13_5nk8j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, -50, 5.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level10" parent="Levels" unique_id=175389105 node_paths=PackedStringArray("MainTheme") instance=ExtResource("14_cxyri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -50, 4.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level11" parent="Levels" unique_id=1234695386 node_paths=PackedStringArray("MainTheme") instance=ExtResource("15_dki1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -50, 6.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level12" parent="Levels" unique_id=1866713743 node_paths=PackedStringArray("MainTheme") instance=ExtResource("16_f5wql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -50, 3.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level13" parent="Levels" unique_id=654674699 node_paths=PackedStringArray("MainTheme") instance=ExtResource("17_nwd3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, -50, 4.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level14" parent="Levels" unique_id=281739254 node_paths=PackedStringArray("MainTheme") instance=ExtResource("18_pd6bp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, -50, 4.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="Level15" parent="Levels" unique_id=1705869926 node_paths=PackedStringArray("MainTheme") instance=ExtResource("19_8qu0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -50, 4.5)
+visible = false
+MainTheme = NodePath("../../MainTheme")
+
+[node name="EndScreen" parent="Levels" unique_id=1113463372 node_paths=PackedStringArray("MainTheme") instance=ExtResource("24_5nk8j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -50, 0.5)
+visible = false
+next = 17
+MainTheme = NodePath("../../MainTheme")
+
+[node name="TitleScreen" parent="Levels" unique_id=662386285 node_paths=PackedStringArray("MainTheme") instance=ExtResource("3_c2m3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, 5.5)
+MainTheme = NodePath("../../MainTheme")
+
+[connection signal="body_entered" from="Cursor/CursorArea" to="." method="_on_cursor_area_body_entered"]
+[connection signal="body_exited" from="Cursor/CursorArea" to="." method="_on_cursor_area_body_exited"]
