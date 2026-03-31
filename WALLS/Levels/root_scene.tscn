@@ -109,12 +109,6 @@ current = true
 fov = 30.0
 size = 18.993
 
-[node name="Camera3D2" type="Camera3D" parent="." unique_id=88690089]
-transform = Transform3D(-1, 7.5710346e-08, -4.3711392e-08, -4.371139e-08, 5.9604645e-08, 1, 7.5710346e-08, 1, -5.9604645e-08, -17.5, 35, 9.5)
-projection = 1
-fov = 30.0
-size = 28.608
-
 [node name="TestLevel" parent="." unique_id=18007518 instance=ExtResource("6_1gsh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, 16.5)
 visible = false

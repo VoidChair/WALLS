@@ -552,18 +552,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, -0.5, 0)
 
 [node name="Skeleton3D" parent="MeshControl/Pivot/Subject2/Armature" parent_id_path=PackedInt32Array(532933037, 211883591) index="0" unique_id=1758519846]
-bones/1/position = Vector3(0, 0.3945083, 0)
-bones/3/position = Vector3(0.29616863, 0.062279187, -2.59907e-05)
-bones/3/rotation = Quaternion(-0.002403703, -0.012455683, -0.90128195, 0.4330474)
+bones/1/position = Vector3(0, 0.39211756, 0)
+bones/3/position = Vector3(0.29619122, 0.06628797, -2.5597565e-05)
+bones/3/rotation = Quaternion(-0.0023072376, -0.012468976, -0.8980079, 0.4397964)
 bones/4/rotation = Quaternion(-0.019564163, 0.012728262, -0.03267351, 0.9991935)
-bones/5/position = Vector3(-0.3041448, 0.06899297, -1.71214e-05)
-bones/5/rotation = Quaternion(-0.002429576, 0.010971307, 0.9244164, 0.38121918)
+bones/5/position = Vector3(-0.3041528, 0.07300181, -1.6995464e-05)
+bones/5/rotation = Quaternion(-0.0023205944, 0.010988814, 0.9206812, 0.3901539)
 bones/6/rotation = Quaternion(-0.019074308, -0.01460119, 0.04548585, 0.9986762)
-bones/8/position = Vector3(0.18302259, 0.33104834, 1.6966342e-07)
-bones/8/rotation = Quaternion(0.0012585075, -0.010751435, 0.9958233, -0.09065776)
+bones/8/position = Vector3(0.18321173, 0.33104178, 1.6269371e-07)
+bones/8/rotation = Quaternion(0.0012673658, -0.010749429, 0.99571294, -0.09186254)
 bones/9/rotation = Quaternion(0.019559288, -0.00014886643, -0.008950173, 0.9997687)
-bones/10/position = Vector3(-0.18398157, 0.33182156, -6.5702045e-07)
-bones/10/rotation = Quaternion(-0.0011945069, -0.010264906, 0.99450016, 0.104224354)
+bones/10/position = Vector3(-0.18425333, 0.33182368, -6.273502e-07)
+bones/10/rotation = Quaternion(-0.00120129, -0.010263328, 0.9943988, 0.10518777)
 bones/11/rotation = Quaternion(0.019404203, -6.695937e-05, 0.037686355, 0.9991012)
 
 [node name="Body" parent="MeshControl/Pivot/Subject2/Armature/Skeleton3D" index="0" unique_id=1633660]
@@ -668,7 +668,6 @@ bus = &"SFX"
 
 [node name="WalkSFX" type="AudioStreamPlayer" parent="." unique_id=554955668]
 stream = ExtResource("7_6c00u")
-volume_db = -15.0
 pitch_scale = 2.6
 bus = &"SFX"
 

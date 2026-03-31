@@ -88,8 +88,14 @@ func next_level(l):
 		current_level = overworld
 		if level_number != 0:
 			saveData.levels[level_number] = 2
-			if saveData.levels[level_number + 1] != 2 and level_number <= 16:
-				saveData.levels[level_number + 1] = 1
+			if level_number + 1 < 16:
+				if saveData.levels[level_number + 1] != 2:
+					saveData.levels[level_number + 1] = 1
+			if level_number + 2 < 16:
+				if saveData.levels[level_number + 2] != 2:
+					saveData.levels[level_number + 2] = 1
+			if saveData.levels[1] == 2 and saveData.levels[2] == 2 and saveData.levels[3] == 2 and saveData.levels[4] == 2 and saveData.levels[5] == 2 and saveData.levels[6] == 2 and saveData.levels[7] == 2 and saveData.levels[8] == 2 and saveData.levels[9] == 2 and saveData.levels[10] == 2 and saveData.levels[11] == 2 and saveData.levels[12] == 2 and saveData.levels[13] == 2 and saveData.levels[14] == 2 and saveData.levels[15] == 2 and saveData.levels[16] == 0:
+				saveData.levels[16] = 1
 			save()
 	#if l > 1 and l < 16:
 		#saveData.levels[l - 1] = 2
@@ -192,6 +198,8 @@ func _input(event: InputEvent) -> void:
 		speedx2()
 	elif event.is_action("speedx3"):
 		speedx3()
+	#elif event.is_action("skip"):
+		#goal()
 
 func speedx1():
 	Engine.time_scale = 1.0

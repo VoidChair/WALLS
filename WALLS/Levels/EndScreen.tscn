@@ -1040,6 +1040,22 @@ audible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 0, 21.5)
 audible = false
 
+[node name="StaticBlock207" parent="Cubes" unique_id=607519838 instance=ExtResource("10_ja7tp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 19.5)
+audible = false
+
+[node name="StaticBlock208" parent="Cubes" unique_id=1571469871 instance=ExtResource("10_ja7tp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 20.5)
+audible = false
+
+[node name="StaticBlock209" parent="Cubes" unique_id=251221216 instance=ExtResource("10_ja7tp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0, 20.5)
+audible = false
+
+[node name="StaticBlock210" parent="Cubes" unique_id=395485195 instance=ExtResource("10_ja7tp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0, 19.5)
+audible = false
+
 [node name="StaticBlock203" parent="Cubes" unique_id=671520110 instance=ExtResource("10_ja7tp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 15.5)
 audible = false
@@ -1402,35 +1418,6 @@ audible = false
 
 [node name="PlacementBlock463" parent="Cubes" unique_id=1200654600 instance=ExtResource("11_biwvd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, 17.5)
-audible = false
-
-[node name="PlacementBlock421" parent="Cubes" unique_id=496535610 instance=ExtResource("11_biwvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0, 20.5)
-audible = false
-
-[node name="PlacementBlock422" parent="Cubes" unique_id=350630950 instance=ExtResource("11_biwvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0, 19.5)
-
-[node name="PlacementBlock426" parent="Cubes" unique_id=1606902751 instance=ExtResource("11_biwvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 20.5)
-audible = false
-
-[node name="PlacementBlock428" parent="Cubes" unique_id=624256161 instance=ExtResource("11_biwvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 19.5)
-
-[node name="PlacementBlock452" parent="Cubes" unique_id=1521236429 instance=ExtResource("11_biwvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0, 20.5)
-
-[node name="PlacementBlock454" parent="Cubes" unique_id=305002926 instance=ExtResource("11_biwvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0, 19.5)
-audible = false
-
-[node name="PlacementBlock464" parent="Cubes" unique_id=452340265 instance=ExtResource("11_biwvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 20.5)
-audible = false
-
-[node name="PlacementBlock468" parent="Cubes" unique_id=1016519271 instance=ExtResource("11_biwvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 19.5)
 audible = false
 
 [node name="PlacementBlock417" parent="Cubes" unique_id=2067654494 instance=ExtResource("11_biwvd")]

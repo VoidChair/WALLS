@@ -191,11 +191,12 @@ func bonk():
 	bonk_sfx_2.play()
 	await get_tree().create_timer(0.5, false).timeout
 	anim_tree["parameters/conditions/bonk"] = false
-	await get_tree().create_timer(0.7, false).timeout
+	await get_tree().create_timer(0.6, false).timeout
 	if started == false or walled == false:
 		return
 	looker.rotation.y += deg_to_rad(-90)
 	cube_anim.play("CollisionReset")
+	await get_tree().create_timer(0.1, false).timeout
 	walled = false
 	can_move = true
 	trail_timer.paused = false
