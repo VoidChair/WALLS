@@ -22,6 +22,7 @@ var rot := 90.0
 var started = false
 var starting_position = Vector3(0, 0, 0)
 var starting_rotation = 0.0
+var first_time = true
 
 func _ready() -> void:
 	anim.play("hidden")
@@ -34,7 +35,10 @@ func begin():
 	started = true
 	invalid.hide()
 	invalid_2.hide()
-	starting_position = global_position
+	if first_time == true:
+		starting_position = global_position
+	if get_tree().current_scene.current_level == get_tree().current_scene.overworld:
+		first_time = false
 
 func goal():
 	started = false

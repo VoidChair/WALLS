@@ -318,7 +318,7 @@ func sit():
 		anim_tree["parameters/LookLeft/blend_position"] = 0
 		anim_tree["parameters/LookRight/blend_position"] = 0
 	await get_tree().create_timer(1.0, false).timeout
-	if started == false or can_move == false:
+	if started == false:
 		return
 	sit_sfx.play()
 	sit_sfx_2.play()
