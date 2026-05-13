@@ -197,6 +197,8 @@ func bonk():
 	looker.rotation.y += deg_to_rad(-90)
 	cube_anim.play("CollisionReset")
 	await get_tree().create_timer(0.1, false).timeout
+	if started == false or walled == false:
+		return
 	walled = false
 	can_move = true
 	trail_timer.paused = false

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bhqxb0xliddy7" path="res://Interactable/PuzzleCube.tscn" id="6_xoiav"]
 [ext_resource type="PackedScene" uid="uid://cebahae64tmj4" path="res://Interactable/Button.tscn" id="7_f5h1b"]
 [ext_resource type="PackedScene" uid="uid://bfte0va7i0f6s" path="res://Interactable/Bridge2x2.tscn" id="8_1u0si"]
+[ext_resource type="PackedScene" uid="uid://c6gntnlucor26" path="res://Interactable/Grid/hint_wall.tscn" id="9_iobj3"]
 [ext_resource type="PackedScene" uid="uid://dxyh2bw3214mg" path="res://Interactable/Goal.tscn" id="9_y8jc6"]
 [ext_resource type="PackedScene" uid="uid://etjasbyyt0jt" path="res://Environment/static_block.tscn" id="10_xi8ic"]
 [ext_resource type="PackedScene" uid="uid://b4v2bl34mhpw7" path="res://Environment/placement_block.tscn" id="11_i1s7i"]
@@ -22,7 +23,6 @@ size = Vector3(100, 1, 100)
 [node name="TestLevel" type="Node3D" unique_id=18007518 node_paths=PackedStringArray("subject_2", "puzzle_cube", "button", "flag")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 5.5)
 script = ExtResource("1_4b247")
-next_level = "res://Levels/Level9.tscn"
 subject_2 = NodePath("Subject2")
 puzzle_cube = NodePath("Interactables/PuzzleCube")
 button = NodePath("Interactables/Button")
@@ -71,6 +71,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 11)
 
 [node name="Goal" parent="Interactables" unique_id=940934265 instance=ExtResource("9_y8jc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 14)
+
+[node name="HintWall" parent="Interactables" unique_id=1200389794 instance=ExtResource("9_iobj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.5)
 
 [node name="Cubes" type="Node3D" parent="." unique_id=1286950026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

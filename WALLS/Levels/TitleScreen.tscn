@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cpkjlec4wtboq" path="res://SFX/block_click.wav" id="10_xbpcm"]
 [ext_resource type="PackedScene" uid="uid://etjasbyyt0jt" path="res://Environment/static_block.tscn" id="11_j1wvk"]
 [ext_resource type="ArrayMesh" uid="uid://blstg5ka57sse" path="res://Environment/TitleCube.obj" id="11_n63d2"]
+[ext_resource type="PackedScene" uid="uid://c6gntnlucor26" path="res://Interactable/Grid/hint_wall.tscn" id="11_pn0so"]
 [ext_resource type="Script" uid="uid://btif20kvl3ps0" path="res://Environment/block.gd" id="11_xbpcm"]
 [ext_resource type="Material" uid="uid://c73v8cstm5tgp" path="res://Environment/CubeMat2.tres" id="12_ag6ci"]
 [ext_resource type="PackedScene" uid="uid://b4v2bl34mhpw7" path="res://Environment/placement_block.tscn" id="12_pn0so"]
@@ -205,6 +206,9 @@ pitch_scale = 0.86
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Title" unique_id=1762159220]
 shape = SubResource("BoxShape3D_xbpcm")
+
+[node name="HintWall" parent="Interactables" unique_id=1200389794 instance=ExtResource("11_pn0so")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2.5)
 
 [node name="Cubes" type="Node3D" parent="." unique_id=1286950026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

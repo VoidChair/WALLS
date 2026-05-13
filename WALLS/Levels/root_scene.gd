@@ -26,6 +26,7 @@ var grabbing = false
 var block_position := Vector3(0, 0, 0)
 var cursor_position := Vector3(0, 0, 0)
 var started = false
+var next_unlocked = 1
 
 @onready var click_sfx: AudioStreamPlayer = $SFX
 
@@ -124,6 +125,14 @@ func next_level(l):
 	current_level.show()
 	await get_tree().create_timer(2.5, false).timeout
 	pause_menu.can_pause = true
+	var n = 0
+	if saveData.levels[16] == 0:
+		while saveData.levels[n + 1] == 2:
+			n += 1
+	else:
+		n = 15
+	next_unlocked = n 
+	overworld.hint_number = n
 
 func overworld_return():
 	current_level.hide()
@@ -229,6 +238,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if grabbing == true:
 		current_block.global_position = round(cursor.global_position + (block_position - cursor_position)) 
+	
 
 func block_move(p):
 	current_block.global_position = p

@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cebahae64tmj4" path="res://Interactable/Button.tscn" id="7_45mx6"]
 [ext_resource type="PackedScene" uid="uid://bfte0va7i0f6s" path="res://Interactable/Bridge2x2.tscn" id="8_nfa0x"]
 [ext_resource type="PackedScene" uid="uid://dxyh2bw3214mg" path="res://Interactable/Goal.tscn" id="9_h5yle"]
+[ext_resource type="PackedScene" uid="uid://c6gntnlucor26" path="res://Interactable/Grid/hint_wall.tscn" id="10_357ht"]
 [ext_resource type="PackedScene" uid="uid://etjasbyyt0jt" path="res://Environment/static_block.tscn" id="10_xx8dr"]
 [ext_resource type="PackedScene" uid="uid://b4v2bl34mhpw7" path="res://Environment/placement_block.tscn" id="11_41o7t"]
 [ext_resource type="PackedScene" uid="uid://bywj3bjc16eko" path="res://UI/fade_anim.tscn" id="12_av53g"]
@@ -96,6 +97,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 4)
 
 [node name="Goal" parent="Interactables" unique_id=940934265 instance=ExtResource("9_h5yle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="HintWall" parent="Interactables" unique_id=1200389794 instance=ExtResource("10_357ht")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.5, 0, 2)
 
 [node name="Cubes" type="Node3D" parent="." unique_id=1286950026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

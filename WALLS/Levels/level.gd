@@ -16,6 +16,8 @@ var total_subjects := 1.0
 @onready var interactables: Node3D = $Interactables
 @onready var blocks_control: Node3D = $Blocks
 #@onready var sfx: Node3D = $SFX
+@onready var hint_wall: Node3D = $Interactables/HintWall
+var hint_number := 0
 
 
 @onready var fade_anim: AnimationPlayer = $FadeAnim
@@ -38,6 +40,7 @@ var cursor_position := Vector3(0, 0, 0)
 var active = false
 
 @export var MainTheme : Node3D
+
 
 
 func _ready() -> void:
@@ -63,6 +66,9 @@ func begin():
 		i.begin()
 	active = true
 	total_subjects = subjects
+	
+	
+	
 	await get_tree().create_timer(2.5, false).timeout
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -394,6 +400,12 @@ func speedx3():
 	if puzzle_cube_2:
 		puzzle_cube_2.speedx3()
 
+
+func hint():
+	if hint_number == 0:
+		hint_wall.activate()
+	else:
+		interactables.get_child(hint_number).activate()
 
 
 func _on_death_plane_body_entered(body: Node3D) -> void:

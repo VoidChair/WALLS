@@ -12,9 +12,13 @@ extends Control
 @onready var speed_icon_3x: Sprite2D = $SpeedIcon3x
 @onready var speed_icon_3x_enabled: Sprite2D = $SpeedIcon3x/SpeedIcon3xEnabled
 @onready var play_button: Button = $PlayButton
+@onready var hint_icon: Sprite2D = $HintIcon
+@onready var hint_icon_2: Sprite2D = $HintIcon/HintIcon2
 
 var speed_position := 0.0
 var speed_position_2 := 0.0
+var hint_position := 0.0
+var hint_position_2 := 0.0
 var started = false
 var active = false
 
@@ -24,6 +28,8 @@ func _ready() -> void:
 func begin():
 	speed_position = speed_icon_1x.position.y
 	speed_position_2 = speed_position - 10
+	hint_position = hint_icon.position.y
+	hint_position_2 = hint_position - 10
 	if Engine.time_scale == 1.5:
 		speed_icon_2x_enabled.show()
 	elif Engine.time_scale == 2.0:
@@ -34,6 +40,7 @@ func begin():
 	active = true
 	play_button.disabled = false
 	play_button.grab_focus()
+	hint_icon_2.hide()
 	#await get_tree().create_timer(2.5, false).timeout
 
 func goal():
@@ -169,3 +176,16 @@ func _on_speedx_3_mouse_entered() -> void:
 
 func _on_speedx_3_mouse_exited() -> void:
 	speed_icon_3x.position.y = speed_position
+
+
+func _on_button_mouse_entered() -> void:
+	hint_icon.position.y = hint_position_2
+
+
+func _on_button_mouse_exited() -> void:
+	hint_icon.position.y = hint_position
+
+
+func _on_button_pressed() -> void:
+	get_parent().hint()
+	hint_icon_2.show()

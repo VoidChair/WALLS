@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://c6gntnlucor26"]
+
+[ext_resource type="Script" uid="uid://be2dlvryajwu3" path="res://Interactable/Grid/hint_wall.gd" id="1_jd5hs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xue2w"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.22000003, 1, 1, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_38m7a"]
+size = Vector2(2.2, 1.2)
+
+[sub_resource type="Animation" id="Animation_yf71x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hint:material_override:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.22000003, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_38m7a"]
+resource_name = "hidden"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hint:material_override:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.22000003, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jd5hs"]
+resource_name = "hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hint:material_override:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.22000003, 1, 1, 0.5019608), Color(0.22000003, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p1bh0"]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hint:material_override:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.22000003, 1, 1, 0), Color(0.23000002, 1, 1, 0.32156864)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38m7a"]
+_data = {
+&"RESET": SubResource("Animation_yf71x"),
+&"hidden": SubResource("Animation_38m7a"),
+&"hide": SubResource("Animation_jd5hs"),
+&"show": SubResource("Animation_p1bh0")
+}
+
+[node name="HintWall" type="Node3D" unique_id=1200389794]
+script = ExtResource("1_jd5hs")
+
+[node name="Hint" type="MeshInstance3D" parent="." unique_id=556015024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+material_override = SubResource("StandardMaterial3D_xue2w")
+mesh = SubResource("PlaneMesh_38m7a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1798694106]
+libraries/ = SubResource("AnimationLibrary_38m7a")

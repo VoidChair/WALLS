@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cd5pci14nglol" path="res://Interactable/Grid/block_2x1.tscn" id="7_kxr0u"]
 [ext_resource type="PackedScene" uid="uid://dxyh2bw3214mg" path="res://Interactable/Goal.tscn" id="10_8x8nf"]
 [ext_resource type="PackedScene" uid="uid://cldux2qwih24d" path="res://Characters/subject_2.tscn" id="10_ej1bv"]
+[ext_resource type="PackedScene" uid="uid://c6gntnlucor26" path="res://Interactable/Grid/hint_wall.tscn" id="10_jfium"]
 [ext_resource type="PackedScene" uid="uid://bf3njqumibr8u" path="res://Characters/subject_3.tscn" id="12_cxxvu"]
 [ext_resource type="PackedScene" uid="uid://bywj3bjc16eko" path="res://UI/fade_anim.tscn" id="13_a5le3"]
 [ext_resource type="PackedScene" uid="uid://5f2rnm2t2rxq" path="res://UI/level_ui.tscn" id="14_76fkc"]
@@ -21,16 +22,13 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kxr0u"]
 
-[node name="TestLevel" type="Node3D" unique_id=18007518 node_paths=PackedStringArray("subject_1", "subject_3", "puzzle_cube", "puzzle_cube_2", "button", "button_2", "flag")]
+[node name="TestLevel" type="Node3D" unique_id=18007518 node_paths=PackedStringArray("subject_1", "subject_3", "puzzle_cube_2", "button_2", "flag")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, 4.5)
 script = ExtResource("1_kxr0u")
-next_level = "res://Levels/LevelSelect.tscn"
 subject_1 = NodePath("Subject1")
 subject_3 = NodePath("Subject3")
 subjects = 2.0
-puzzle_cube = NodePath("")
 puzzle_cube_2 = NodePath("Interactables/PuzzleCube2")
-button = NodePath("")
 button_2 = NodePath("Interactables/Button2")
 flag = NodePath("Interactables/Goal")
 time = 25
@@ -79,6 +77,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, 5)
 
 [node name="Goal" parent="Interactables" unique_id=940934265 instance=ExtResource("10_8x8nf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
+
+[node name="HintWall" parent="Interactables" unique_id=1200389794 instance=ExtResource("10_jfium")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 4.5)
 
 [node name="Cubes" type="Node3D" parent="." unique_id=1286950026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

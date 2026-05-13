@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://risif6yhud7v" path="res://UI/time_limit.tscn" id="9_5g41i"]
 [ext_resource type="PackedScene" uid="uid://b4v2bl34mhpw7" path="res://Environment/placement_block.tscn" id="9_p2sgf"]
 [ext_resource type="PackedScene" uid="uid://5f2rnm2t2rxq" path="res://UI/level_ui.tscn" id="10_7fl83"]
+[ext_resource type="PackedScene" uid="uid://c6gntnlucor26" path="res://Interactable/Grid/hint_wall.tscn" id="11_p5226"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kv5fy"]
 size = Vector3(100, 1, 100)
@@ -19,7 +20,6 @@ size = Vector3(100, 1, 100)
 [node name="Level1" type="Node3D" unique_id=18007518 node_paths=PackedStringArray("subject_1", "flag")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 6.5)
 script = ExtResource("1_5g41i")
-next_level = "res://Levels/Level2.tscn"
 subject_1 = NodePath("Subject1")
 flag = NodePath("Interactables/Goal")
 
@@ -50,6 +50,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0.5)
 
 [node name="Goal" parent="Interactables" unique_id=940934265 instance=ExtResource("6_104vp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
+
+[node name="HintWall" parent="Interactables" unique_id=1200389794 instance=ExtResource("11_p5226")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5, 0, 2)
 
 [node name="Cubes" type="Node3D" parent="." unique_id=1286950026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -383,5 +386,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -0.5)
 [node name="TimeLimit" parent="." unique_id=1340037575 instance=ExtResource("9_5g41i")]
 
 [node name="LevelUI" parent="." unique_id=1108000162 instance=ExtResource("10_7fl83")]
+
+[node name="Node3D" parent="." unique_id=383295552 instance=ExtResource("11_p5226")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5, 0, 2)
 
 [connection signal="body_entered" from="DeathPlane" to="." method="_on_death_plane_body_entered"]

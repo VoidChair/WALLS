@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b4v2bl34mhpw7" path="res://Environment/placement_block.tscn" id="5_xb3l7"]
 [ext_resource type="PackedScene" uid="uid://cd5pci14nglol" path="res://Interactable/Grid/block_2x1.tscn" id="6_crwtj"]
 [ext_resource type="PackedScene" uid="uid://5f2rnm2t2rxq" path="res://UI/level_ui.tscn" id="6_ekubr"]
+[ext_resource type="PackedScene" uid="uid://c6gntnlucor26" path="res://Interactable/Grid/hint_wall.tscn" id="6_kkglu"]
 [ext_resource type="PackedScene" uid="uid://dxyh2bw3214mg" path="res://Interactable/Goal.tscn" id="10_ejs1k"]
 [ext_resource type="PackedScene" uid="uid://bywj3bjc16eko" path="res://UI/fade_anim.tscn" id="11_cpc1j"]
 [ext_resource type="PackedScene" uid="uid://risif6yhud7v" path="res://UI/time_limit.tscn" id="12_y2rnr"]
@@ -19,7 +20,6 @@ size = Vector3(100, 1, 100)
 [node name="TestLevel" type="Node3D" unique_id=18007518 node_paths=PackedStringArray("subject_3", "flag")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 5.5)
 script = ExtResource("1_mlphh")
-next_level = "res://Levels/Level12.tscn"
 subject_3 = NodePath("Subject3")
 flag = NodePath("Interactables/Goal")
 
@@ -37,6 +37,31 @@ shape = SubResource("BoxShape3D_kv5fy")
 transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -6, 0)
 mesh = SubResource("PlaneMesh_kxr0u")
 surface_material_override/0 = ExtResource("3_mqtpd")
+
+[node name="Blocks" type="Node3D" parent="." unique_id=1356617527]
+
+[node name="Blocks2x5" parent="Blocks" unique_id=303515186 instance=ExtResource("6_crwtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 2.5)
+
+[node name="Blocks2x6" parent="Blocks" unique_id=1131297570 instance=ExtResource("6_crwtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0.5)
+
+[node name="Blocks2x7" parent="Blocks" unique_id=961849089 instance=ExtResource("6_crwtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 4.5)
+
+[node name="Blocks2x8" parent="Blocks" unique_id=1208979884 instance=ExtResource("6_crwtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 6.5)
+
+[node name="Blocks2x9" parent="Blocks" unique_id=434175765 instance=ExtResource("6_crwtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 8.5)
+
+[node name="Interactables" type="Node3D" parent="." unique_id=1675224053]
+
+[node name="Goal" parent="Interactables" unique_id=940934265 instance=ExtResource("10_ejs1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
+
+[node name="HintWall" parent="Interactables" unique_id=1200389794 instance=ExtResource("6_kkglu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5.5)
 
 [node name="Cubes" type="Node3D" parent="." unique_id=1286950026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -490,28 +515,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 2.5)
 
 [node name="PlacementBlock151" parent="Cubes" unique_id=1086903750 instance=ExtResource("5_xb3l7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 5.5)
-
-[node name="Blocks" type="Node3D" parent="." unique_id=1356617527]
-
-[node name="Blocks2x5" parent="Blocks" unique_id=303515186 instance=ExtResource("6_crwtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 2.5)
-
-[node name="Blocks2x6" parent="Blocks" unique_id=1131297570 instance=ExtResource("6_crwtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0.5)
-
-[node name="Blocks2x7" parent="Blocks" unique_id=961849089 instance=ExtResource("6_crwtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 4.5)
-
-[node name="Blocks2x8" parent="Blocks" unique_id=1208979884 instance=ExtResource("6_crwtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 6.5)
-
-[node name="Blocks2x9" parent="Blocks" unique_id=434175765 instance=ExtResource("6_crwtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 8.5)
-
-[node name="Interactables" type="Node3D" parent="." unique_id=1675224053]
-
-[node name="Goal" parent="Interactables" unique_id=940934265 instance=ExtResource("10_ejs1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
 
 [node name="FadeAnim" parent="." unique_id=1666654621 instance=ExtResource("11_cpc1j")]
 

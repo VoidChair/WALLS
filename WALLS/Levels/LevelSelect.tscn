@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://cp2x8mek8hj23" path="res://Environment/VoidMat.tres" id="3_1a6e6"]
 [ext_resource type="PackedScene" uid="uid://cd5pci14nglol" path="res://Interactable/Grid/block_2x1.tscn" id="4_8wy8c"]
 [ext_resource type="PackedScene" uid="uid://etjasbyyt0jt" path="res://Environment/static_block.tscn" id="5_mdthd"]
+[ext_resource type="PackedScene" uid="uid://c6gntnlucor26" path="res://Interactable/Grid/hint_wall.tscn" id="6_mdthd"]
 [ext_resource type="PackedScene" uid="uid://b4v2bl34mhpw7" path="res://Environment/placement_block.tscn" id="6_xnriy"]
 [ext_resource type="PackedScene" uid="uid://bywj3bjc16eko" path="res://UI/fade_anim.tscn" id="7_llen3"]
 [ext_resource type="PackedScene" uid="uid://c16bje623tnea" path="res://Environment/level_trigger.tscn" id="8_7xsp4"]
@@ -67,6 +68,54 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 4.5)
 
 [node name="Interactables" type="Node3D" parent="." unique_id=1675224053]
 
+[node name="HintWall" parent="Interactables" unique_id=1200389794 instance=ExtResource("6_mdthd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 20.5)
+
+[node name="HintWall2" parent="Interactables" unique_id=922436171 instance=ExtResource("6_mdthd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 16.5)
+
+[node name="HintWall3" parent="Interactables" unique_id=353197756 instance=ExtResource("6_mdthd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.5, 0, 18)
+
+[node name="HintWall4" parent="Interactables" unique_id=1883328760 instance=ExtResource("6_mdthd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.5, 0, 18)
+
+[node name="HintWall5" parent="Interactables" unique_id=1036132743 instance=ExtResource("6_mdthd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.5, 0, 18)
+
+[node name="HintWall6" parent="Interactables" unique_id=870701188 instance=ExtResource("6_mdthd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.5, 0, 20)
+
+[node name="HintWall7" parent="Interactables" unique_id=928331897 instance=ExtResource("6_mdthd")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -10, 0, 1.5)
+
+[node name="HintWall8" parent="Interactables" unique_id=1623434013 instance=ExtResource("6_mdthd")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -16.5, 0, 16)
+
+[node name="HintWall9" parent="Interactables" unique_id=812916755 instance=ExtResource("6_mdthd")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -15, 0, 4.5)
+
+[node name="HintWall10" parent="Interactables" unique_id=1591451988 instance=ExtResource("6_mdthd")]
+transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, -22.5, 0, 2)
+
+[node name="HintWall11" parent="Interactables" unique_id=1291040887 instance=ExtResource("6_mdthd")]
+transform = Transform3D(3.0597974e-07, 0, 1, 0, 1, 0, -1, 0, 3.0597974e-07, -22.5, 0, 6)
+
+[node name="HintWall12" parent="Interactables" unique_id=1946244856 instance=ExtResource("6_mdthd")]
+transform = Transform3D(-1, 0, 2.6226834e-07, 0, 1, 0, -2.6226834e-07, 0, -1, -27, 0, 13.5)
+
+[node name="HintWall13" parent="Interactables" unique_id=259186947 instance=ExtResource("6_mdthd")]
+transform = Transform3D(-1, 0, 2.6226834e-07, 0, 1, 0, -2.6226834e-07, 0, -1, -22, 0, 17.5)
+
+[node name="HintWall14" parent="Interactables" unique_id=1237109254 instance=ExtResource("6_mdthd")]
+transform = Transform3D(-1, 0, 2.6226834e-07, 0, 1, 0, -2.6226834e-07, 0, -1, -26, 0, 20.5)
+
+[node name="HintWall15" parent="Interactables" unique_id=1743264972 instance=ExtResource("6_mdthd")]
+transform = Transform3D(-1, 0, 2.6226834e-07, 0, 1, 0, -2.6226834e-07, 0, -1, -22, 0, 16.5)
+
+[node name="HintWall16" parent="Interactables" unique_id=25141792 instance=ExtResource("6_mdthd")]
+transform = Transform3D(3.0597974e-07, 0, 1, 0, 1, 0, -1, 0, 3.0597974e-07, -15.5, 0, 10)
+
 [node name="LevelTrigger" parent="Interactables" unique_id=340990172 instance=ExtResource("8_7xsp4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 14)
 
@@ -116,12 +165,12 @@ level = "10"
 next = 10
 
 [node name="LevelTrigger11" parent="Interactables" unique_id=1811659874 instance=ExtResource("8_7xsp4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 11)
 level = "11"
 next = 11
 
 [node name="LevelTrigger12" parent="Interactables" unique_id=1109733233 instance=ExtResource("8_7xsp4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 10)
 level = "12"
 next = 12
 
