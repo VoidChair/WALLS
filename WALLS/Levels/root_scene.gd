@@ -28,6 +28,9 @@ var cursor_position := Vector3(0, 0, 0)
 var started = false
 var next_unlocked = 1
 
+var cursor_icon = load("res://UI/Cursor.png")
+var grab_icon = load("res://UI/CursorGrab.png")
+
 @onready var click_sfx: AudioStreamPlayer = $SFX
 
 func verify_save_directory(path: String):
@@ -40,6 +43,7 @@ func save():
 	ResourceSaver.save(saveData, save_file_path + save_file_name)
 
 func _ready() -> void:
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	speedx3()
 	verify_save_directory(save_file_path)
 	if ResourceLoader.exists(save_file_path + save_file_name):
@@ -187,8 +191,10 @@ func _input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		can_grab = false
 		grabbing = true
+		#Input.set_custom_mouse_cursor(grab_icon)
 	elif event.is_action_pressed("grab") and grabbing == true and invalid <= 0:
 		grabbing = false
+		#Input.set_custom_mouse_cursor(cursor_icon)
 		cursor_area.position.y += 5
 		current_level.can_start = true
 		#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
@@ -238,6 +244,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if grabbing == true:
 		current_block.global_position = round(cursor.global_position + (block_position - cursor_position)) 
+	
 	
 
 func block_move(p):

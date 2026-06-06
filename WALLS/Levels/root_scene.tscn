@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://8vtnt68l3dlm" path="res://Levels/Level14.tscn" id="18_pd6bp"]
 [ext_resource type="PackedScene" uid="uid://bp6i6ve6as5cv" path="res://Levels/Level15.tscn" id="19_8qu0j"]
 [ext_resource type="PackedScene" uid="uid://blsoj5auuak4i" path="res://Levels/EndScreen.tscn" id="24_5nk8j"]
+[ext_resource type="Texture2D" uid="uid://b7wsohe3ev0i" path="res://UI/Cursor.png" id="25_dki1k"]
+[ext_resource type="Texture2D" uid="uid://dtxeoiaunsy36" path="res://UI/CursorGrab.png" id="26_f5wql"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4kvgd"]
 
@@ -205,6 +207,17 @@ MainTheme = NodePath("../../MainTheme")
 [node name="TitleScreen" parent="Levels" unique_id=662386285 node_paths=PackedStringArray("MainTheme") instance=ExtResource("3_c2m3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, 5.5)
 MainTheme = NodePath("../../MainTheme")
+
+[node name="CursorIcon" type="Node2D" parent="." unique_id=469443740]
+visible = false
+
+[node name="CursorDefault" type="Sprite2D" parent="CursorIcon" unique_id=116879363]
+position = Vector2(126, 57)
+texture = ExtResource("25_dki1k")
+
+[node name="CursorGrab" type="Sprite2D" parent="CursorIcon" unique_id=315167967]
+visible = false
+texture = ExtResource("26_f5wql")
 
 [connection signal="body_entered" from="Cursor/CursorArea" to="." method="_on_cursor_area_body_entered"]
 [connection signal="body_exited" from="Cursor/CursorArea" to="." method="_on_cursor_area_body_exited"]
